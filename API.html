@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<!-- To-Do When App is functional:
+-Optimize the 4 places chosen by looping thru the json and only using those which have OK for the details request.  -->
+<!-- -Include other tags as sometimes not all the tabs are filled up. So look in all of the json tags -->
+<!-- -Basic approach: Append all the json for all tags for a given tab and then find 4 or try to find 4 which give an OK image request. -->
+<!-- https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js -->
+
+
+<html>
+  <head>
+    <title>GoPool</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #cf{ 
+        height: 100%;         
+        background-color: #4f585d;
+      }
+      body {
+        background:#4f585d !important;
+      }
+      #tabsdiv {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 8px;
+      }
+      #title {
+        text-align: left;
+        padding-left: 27px;
+        color: #ebeeed;
+        font-size: 2.5em;
+        font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+      }
+      #title2 {
+        padding-top: 2px;
+        text-align: left;
+        padding-left: 27px;
+        color: #ebeeed;
+        font-size: 2em;
+        font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+      }
+      .tab, {
+          font-size: 1.2em;
+      }
+      i {
+        padding: 10px;
+      }
+      .nav-tabs{
+          background-color:#161616;
+
+        }
+      .tab-content{
+          background: rgba(79, 88, 93, 0.2);
+      }
+      .nav-tabs > li > a{
+        border: medium none;
+        color: rgba(79, 88, 93, 1);
+        font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+      }
+      .nav-tabs > li > a:hover{
+        background-color: #303136 !important;
+          border: medium none;
+          border-radius: 0;
+          color:#fff;
+      }
+      .bord {
+        border-right: 20px solid white;
+        border-left: 20px solid white;
+        border-top: 10px solid white;
+        border-bottom: 10px solid white;
+        margin-top: 20px;
+      }
+      .bordblock {
+        background-color: white;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .rect {
+        background-color: #ebeeea;
+        margin-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+      .center {
+        text-align: center;
+      }
+      .bordblocktext {
+        margin-right: 5%;
+        margin-left: 5%;
+        line-height: 1;
+        font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+      }
+       {
+        margin, padding:0;
+      }
+      .title {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      .white {
+        font-size: 0em;
+        color: white;
+      }
+      .open {
+        color: green;
+      }
+      .bold {
+                  font-weight: bold;
+                  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+                  font-size: 1.3em;
+      }
+      .closed {
+        color: red;
+      }
+      .gobutton {
+          background-color: #0099CC;
+          border-radius: 0;
+          color: white;
+      }
+      .buttondiv {
+        margin-top: -5px;
+        margin-bottom: 15px;
+        border-right: 20px #ebeeea solid;
+        border-left: 20px #ebeeea solid;
+        text-align: center;
+        background-color: 
+        line-height: 2;
+      }
+      .dollas {
+        font-weight: bold;
+/*        font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;*/
+        color: green;
+        float: right;
+      }
+      #line {
+        padding-top: 30px;
+        height: 1px;
+        color: white;
+        width: 98.5%;
+        margin-left: 10px;
+        border-bottom: 1px white solid;
+      }
+      #name{
+        margin-top: 5px;
+        margin-left: 10px;
+        width: 100%;
+        height: 48px;
+      }
+      #find {
+        text-align: center;
+        vertical-align: text-bottom;
+        margin-top: 5px;
+      }
+      .findhover {
+          text-align: center;
+        vertical-align: text-bottom;
+        margin-top: 5px;
+        background-color: #7C7C7C;     
+      }
+    </style>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type"text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script>
+        //ALL TAGS FOR COMMON PLACSE
+        var tag = 'restaurant';
+        var restaurants = []; //tags = bakery, cafe, food, meal_delivery, meal_takeaway, restaurant
+        var entertainment = []; //tags = amusement_park, aquarium, art_gallery, bar, bowling_alley, campground, casino, city_hall, establishment, library, movie_theater, museum, night_club, park, stadium, zoo
+        var grocery = []; //tags = convenience_store, grocery_or_supermarket,food 
+        var shopping = []; //tags = bicycle_store, book_store, car_dealer, clothing_store, department_store, electronics_store, florist, furniture_store, hardware_store, home_goods_store, jewelry_store, liquor_store, movie_rental, pet_store, shoe_store, shopping_mall, spa, store
+        var transportandtravel = []; //tags = airport, bus_station, car_rental, moving_company, school, subway_station, taxi_stand, train_station, travel_agency, university
+        var convenianceandservices = []; //tags = atm, accounting, bank, car_repair, car_wash, finance, gas_station, gym, insurance_agency, laundry, lawyer, locksmith, logding, parking, post_office, real_estate_agency, storage
+        var care = []; //tags = dentist, doctor, health, hospital, hair_care, beauty_salon, pharmacy, physiotherapist, veterinary_care
+        // $.ajax({
+        //     url:
+        //     "https://maps.googleapis.com/maps/api/place/search/jsonp?location=-33.8670522,151.1957362&radius=500&sensor=false&key=AIzaSyDcwmPkIk7GjzLJ-DcOsI9bjbKnULoqPEc",
+        //     type: "GET",
+        //     dataType: 'JSONP',
+        //     cache: false,
+        //     success: processXML,
+        //     error: function() {
+        //         alert("Failed to connect to Google Maps.");
+        //     }
+        // });
+        // function processXML(xml) {
+        //     alert("Good");
+        // }
+        var map;
+        var infowindow;
+        $(document).ready(function(){
+           var types = '';
+            if ($("#home").attr('class') == 'tab-pane active') {
+                types = ['restaurant','bakery', 'cafe','meal_delivery', 'meal_takeaway']
+                initialize(types);
+              } 
+          }); 
+        // $("#traveltab").click(function() {
+        //   alert("travel");
+        // });  
+function addClassNameListener(elemId, callback) {
+    var lastClassName = $(elemId).attr('class');
+    window.setInterval( function() {   
+       var className = $(elemId).attr('class');
+        if (className !== lastClassName) {
+          if(lastClassName != undefined && lastClassName == 'tab-pane') {
+            callback(); 
+          }  
+          lastClassName = className;
+        }
+    },10);
+}
+addClassNameListener("#travel", function(){  //IT CHANGES BUT ONLY WHEN YOU CLICK BACK ON RESTAURANTS. THERE ARE TONS OF BUGS
+                $("#travelrow").show();
+                $("#homerow").hide();
+                $("#entertainmentrow").hide();
+                types = ['airport', 'bus_station', 'car_rental', 'moving_company','subway_station', 'taxi_stand', 'train_station', 'travel_agency']
+                initialize(types);
+                tag = 'travel';
+
+});
+addClassNameListener("#home", function(){  //IT CHANGES BUT ONLY WHEN YOU CLICK BACK ON RESTAURANTS. THERE ARE TONS OF BUGS
+                $("#homerow").show();
+                              $("#home").fadeIn(500);
+                $("#travelrow").hide();
+                $("#entertainmentrow").hide();
+                types = ['restaurant','bakery', 'cafe', 'food', 'meal_delivery', 'meal_takeaway']
+                initialize(types);
+                tag = 'restaurant';
+});
+addClassNameListener("#profile", function(){  //IT CHANGES BUT ONLY WHEN YOU CLICK BACK ON RESTAURANTS. THERE ARE TONS OF BUGS
+                $("#entertainmentrow").show();
+                $("#homerow").hide();
+                $("#travelrow").hide();
+                types = ['amusement_park', 'aquarium', 'art_gallery', 'bar', 'bowling_alley', 'campground', 'casino', 'city_hall', 'establishment', 'library', 'movie_theater', 'museum', 'night_club', 'park', 'stadium', 'zoo']
+                initialize(types);
+                tag = 'entertainment';
+});
+//With this, you can rather than alert changed, change the types and make the call
+        var autocomplete;
+        function initialize(types) {
+          // 39.1833, -77.2667
+          var pyrmont = new google.maps.LatLng(37.7833, -122.4167); //INPUT USER LOCATION HERE
+          // Create the autocomplete object, restricting the search
+          // to geographical location types.
+          autocomplete = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('name')),
+              { types: ['geocode'] });
+          // When the user selects an address from the dropdown,
+          // populate the address fields in the form.
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            fillInAddress();
+          });
+           map = new google.maps.Map(document.getElementById('map-canvas'), {
+            center: pyrmont,
+            zoom: 15
+          });
+           $("#map-canvas").hide();      
+          var request = {
+            location: pyrmont,
+            radius: 500,
+            types: types
+          };
+          var requestdetails = {
+            placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+          };
+          infowindow = new google.maps.InfoWindow();
+          var service = new google.maps.places.PlacesService(map);
+          service.nearbySearch(request, callback);
+        }
+        function callback(results, status) {
+          var answer = [];
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              $("#json").append(JSON.stringify(results[i], null, 4) + '<br/><br/>');
+              var parsed = (jQuery.parseJSON(JSON.stringify(results[i], null, 4)));
+              if (i == 0) {
+                if (tag == 'restaurant') {
+                  $("#restname").html(parsed.name);
+                  if ($("#restname").text().length > 20) {
+                    $("#restname").css("font-size","1em");
+                  }
+                } else if (tag == 'travel') {
+                  $("#restnamet").html(parsed.name);
+                  if ($("#restnamet").text().length > 20) {
+                    $("#restnamet").css("font-size","1em");
+                  }                
+                } else if (tag == 'entertainment') {
+                  $("#restnamee").html(parsed.name);
+                  if ($("#restnamee").text().length > 20) {
+                    $("#restnamee").css("font-size","1em");
+                  }                   
+                };
+                  var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
+                    center: new google.maps.LatLng(0, 0), //these coordinates are irrevalent
+                    zoom: 15
+                  });
+                  var request = {
+                    placeId: parsed.place_id
+                  };
+                  var servicer = new google.maps.places.PlacesService(mapr);
+                  servicer.getDetails(request, function(place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                      var p = place.photos;
+                      if (p != undefined) {
+                        var link = ((p[0].getUrl({'maxWidth': 5000, 'maxHeight': 200})));
+                        console.log(link);
+                        if (tag == 'restaurant') {
+                          $("#rpic1").attr('src', link);                        
+                        } else if (tag == 'travel') {
+                          $("#rpic1t").attr('src', link);
+                        } else if (tag == 'entertainment') {
+                          $("#rpic1e").attr('src', link);
+                        }
+                      }
+                    }     
+                  });
+                  if (parsed.opening_hours != undefined && parsed.opening_hours.open_now) { //meaning restaurant is open
+                    if (tag == 'restaurant') {
+                      $("#hours1").css("color","green");
+                      $("#hours1").html("NOW OPEN");
+                    } else if (tag == 'travel') {
+                      $("#hours1t").css("color","green");
+                      $("#hours1t").html("NOW OPEN");
+                    } else if (tag == 'entertainment') {
+                      $("#hours1e").css("color","green");
+                      $("#hours1e").html("NOW OPEN");                    
+                    };
+                  } else if (parsed.opening_hours != undefined) {
+                    if (tag == 'restaurant') {
+                      $("#hours1").css("color","red");
+                      $("#hours1").html("NOW CLOSED");  
+                    } else if (tag == 'travel') {
+                      $("#hours1t").css("color","red");
+                      $("#hours1t").html("NOW CLOSED");  
+                    } else if (tag == 'entertainment') {
+                      $("#hours1e").css("color","red");
+                      $("#hours1e").html("NOW CLOSED");                       
+                    };                
+                  } else {
+                    if (tag == 'restaurant') {
+                       $("#hours1").html("ALWAYS OPEN");  
+                       $("#hours1").css("color","green");
+                    } else if (tag = 'travel') {
+                       $("#hours1t").html("ALWAYS OPEN");  
+                       $("#hours1t").css("color","green");
+                    } else if (tag == 'entertainment') {
+                       $("#hours1e").html("ALWAYS OPEN");  
+                       $("#hours1e").css("color","green");
+                    };
+                  }
+
+              } else if (i == 1) {
+                  if (tag == 'restaurant') {
+                    $("#restname2").html(parsed.name);
+                    if ($("#restname2").text().length > 20) {
+                      $("#restname2").css("font-size","1em");
+                    }
+                  } else if (tag == 'travel') {
+                    $("#restname2t").html(parsed.name);
+                    if ($("#restname2t").text().length > 20) {
+                      $("#restname2t").css("font-size","1em");
+                    }
+                  } else if (tag == 'entertainment') {
+                    $("#restname2e").html(parsed.name);
+                    if ($("#restname2e").text().length > 20) {
+                      $("#restname2e").css("font-size","1em");
+                    }                    
+                  };
+                  var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
+                    center: new google.maps.LatLng(-33.8665433, 151.1956316),
+                    zoom: 15
+                  });
+                  var request = {
+                    placeId: parsed.place_id
+                  };
+                  var servicer = new google.maps.places.PlacesService(mapr);
+                  servicer.getDetails(request, function(place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        var p = place.photos;
+                        if (p != undefined) {
+                          var link = ((p[0].getUrl({'maxWidth': 5000, 'maxHeight': 200})));
+                        if (tag == 'restaurant') {
+                          $("#rpic2").attr('src', link);
+                        } else if (tag == 'travel') {
+                          $("#rpic2t").attr('src', link);
+                        } else if (tag == 'entertainment') {
+                          $("#rpic2e").attr('src', link);
+                        };
+                      }
+                    }     
+                  });
+                if (parsed.opening_hours != undefined && parsed.opening_hours.open_now) { //meaning restaurant is open and hours exist
+                  if (tag == 'restaurant') {
+                    $("#hours2").html("NOW OPEN");
+                    $("#hours2").css("color","green");
+                  } else if (tag == 'travel') {
+                    $("#hours2t").html("NOW OPEN");
+                    $("#hours2t").css("color","green");
+                  } else if (tag == 'entertainment') {
+                    $("#hours2e").html("NOW OPEN");
+                    $("#hours2e").css("color","green");
+                  };
+                } else if (parsed.opening_hours != undefined) {
+                  if (tag == 'restaurant') {
+                    $("#hours2").html("NOW CLOSED");  
+                    $("#hours2").css("color","red");   
+                  } else if (tag == 'travel') {
+                    $("#hours2t").html("NOW CLOSED");  
+                    $("#hours2t").css("color","red");   
+                  } else if (tag == 'entertainment') {
+                    $("#hours2e").html("NOW CLOSED");  
+                    $("#hours2e").css("color","red");  
+                  };             
+                } else {
+                  if (tag == 'restaurant') {
+                     $("#hours2").html("ALWAYS OPEN"); 
+                     $("#hours2").css("color","green"); 
+                  } else if (tag == 'travel') {
+                     $("#hours2t").html("ALWAYS OPEN"); 
+                     $("#hours2t").css("color","green"); 
+                  } else if (tag == 'entertainment') {
+                     $("#hours2e").html("ALWAYS OPEN"); 
+                     $("#hours2e").css("color","green");
+                  };
+                }
+              } else if (i == 2) {
+                  if (tag == 'restaurant') {
+                    $("#restname3").html(parsed.name);
+                    if ($("#restname3").text().length > 20) {
+                      $("#restname3").css("font-size","1em");
+                    }
+                  } else if (tag == 'travel') {
+                    $("#restname3t").html(parsed.name);
+                    if ($("#restname3t").text().length > 20) {
+                      $("#restname3t").css("font-size","1em");
+                    }
+                  } else if (tag == 'entertainment') {
+                    $("#restname3e").html(parsed.name);
+                    if ($("#restname3e").text().length > 20) {
+                      $("#restname3e").css("font-size","1em");
+                    }
+                  };                
+                  var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
+                    center: new google.maps.LatLng(-33.8665433, 151.1956316),
+                    zoom: 15
+                  });
+                  var request = {
+                    placeId: parsed.place_id
+                  };
+                  var servicer = new google.maps.places.PlacesService(mapr);
+                  servicer.getDetails(request, function(place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                     // $("#jsonq").html(JSON.stringify(place, null, 4) + '<br/>');
+                      var p = place.photos;
+                      if (p != undefined) {
+                       var link = ((p[0].getUrl({'maxWidth': 5000, 'maxHeight': 200})));
+                        if (tag == 'restaurant') {
+                         $("#rpic3").attr('src', link);
+                        } else if (tag == travel) {
+                         $("#rpic3t").attr('src', link);                         
+                        } else if (tag == 'entertainment') {
+                         $("#rpic3e").attr('src', link); 
+                        }; 
+                       } 
+                    }     
+                  });
+                  if (parsed.opening_hours != undefined && parsed.opening_hours.open_now) { //meaning restaurant is open
+                    if (tag == 'restaurant') {
+                      $("#hours3").html("NOW OPEN");
+                      $("#hours3").css("color","green");
+                    } else if (tag == 'travel') {
+                      $("#hours3t").html("NOW OPEN");
+                      $("#hours3t").css("color","green");
+                    } else if (tag == 'entertainment') {
+                      $("#hours3e").html("NOW OPEN");
+                      $("#hours3e").css("color","green");
+                    };
+                  } else if (parsed.opening_hours != undefined) {
+                    if (tag == 'restaurant') {
+                      $("#hours3").html("NOW CLOSED");  
+                      $("#hours3").css("color","red");  
+                    } else if (tag == 'travel') {
+                      $("#hours3t").html("NOW CLOSED");  
+                      $("#hours3t").css("color","red");                      
+                    } else if (tag == 'entertainment') {
+                      $("#hours3e").html("NOW CLOSED");  
+                      $("#hours3e").css("color","red");  
+                    };              
+                  } else {
+                    if (tag == 'restaurant') {
+                     $("#hours3").html("ALWAYS OPEN"); 
+                     $("#hours3").css("color","green"); 
+                    } else if (tag == 'travel') {
+                      $("#hours3t").html("ALWAYS OPEN"); 
+                      $("#hours3t").css("color","green");                      
+                    } else if (tag == 'entertainment') {
+                      $("#hours3e").html("ALWAYS OPEN"); 
+                      $("#hours3e").css("color","green");   
+                    };
+                  }
+              } else if (i == 3) {
+                  if (tag == 'restaurant') {
+                    $("#restname4").html(parsed.name);
+                    if ($("#restname4").text().length > 20) {
+                      $("#restname4").css("font-size","1em");
+                    }
+                  } else if (tag == 'travel') {
+                    $("#restname4t").html(parsed.name);
+                    if ($("#restname4t").text().length > 20) {
+                      $("#restname4t").css("font-size","1em");
+                    }
+                  } else if (tag == 'entertainment') {
+                    $("#restname4e").html(parsed.name);
+                    if ($("#restname4e").text().length > 20) {
+                      $("#restname4e").css("font-size","1em");
+                    }
+                  };
+                  var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
+                    center: new google.maps.LatLng(0, 0),
+                    zoom: 15
+                  });
+                  var request = {
+                    placeId: parsed.place_id
+                  };
+                  var servicer = new google.maps.places.PlacesService(mapr);
+                  servicer.getDetails(request, function(place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                     // $("#jsonq").html(JSON.stringify(place, null, 4) + '<br/>');
+                      var p = place.photos;
+                      if (p != undefined) {
+                       var link = ((p[0].getUrl({'maxWidth': 500, 'maxHeight': 200})));
+                          if (tag == 'restaurant') {
+                            $("#rpic4").attr('src', link);
+                          } else if (tag == 'travel') {
+                            $("#rpic4t").attr('src', link);                          
+                          } else if (tag == 'entertainment') {
+                            $("#rpic4e").attr('src', link); 
+                          };
+                      } 
+                    }     
+                  });
+
+                  if (parsed.opening_hours != undefined && parsed.opening_hours.open_now) { //meaning restaurant is open
+                    if (tag == 'restaurant') {
+                      $("#hours4").html("NOW OPEN");
+                      $("#hours4").css("color","green");
+                    } else if (tag == 'travel') {
+                      $("#hours4t").html("NOW OPEN");
+                      $("#hours4t").css("color","green");                      
+                    } else if (tag == 'entertainment') {
+                      $("#hours4e").html("NOW OPEN");
+                      $("#hours4e").css("color","green");  
+                    };
+                  } else if (parsed.opening_hours != undefined) {
+                    if (tag == 'restaurant') {
+                      $("#hours4").html("NOW CLOSED");   
+                      $("#hours4").css("color","red");   
+                    } else if (tag == 'travel') {
+                      $("#hours4t").html("NOW CLOSED");   
+                      $("#hours4t").css("color","red");                    
+                    } else if (tag == 'entertainment') {
+                      $("#hours4e").html("NOW CLOSED");   
+                      $("#hours4e").css("color","red");   
+                    };            
+                  } else {
+                    if (tag == 'restaurant') {
+                       $("#hours4").html("ALWAYS OPEN");  
+                       $("#hours4").css("color","green");
+                    } else if (tag == 'travel') {
+                      $("#hours4t").html("ALWAYS OPEN");  
+                      $("#hours4t").css("color","green");                    
+                    } else if (tag == 'entertainment') {
+                      $("#hours4e").html("ALWAYS OPEN");  
+                      $("#hours4e").css("color","green"); 
+                    };
+                  }
+              };
+              // alert(parsed.name);
+            }
+          }
+          if (tag == 'restaurant') {
+            $("#btn1").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[0], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours1").html() == "NOW CLOSED") {
+                  $("#btn1").attr("data-target", "#myModal");
+                  $("#btn1").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn2").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[1], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours2").html() == "NOW CLOSED") {
+                  $("#btn2").attr("data-target", "#myModal");
+                  $("#btn2").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn3").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[2], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours3").html() == "NOW CLOSED") {
+                  $("#btn3").attr("data-target", "#myModal");
+                  $("#btn3").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn4").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[3], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours4").html() == "NOW CLOSED") {
+                  $("#btn4").attr("data-target", "#myModal");
+                  $("#btn4").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+          } else if (tag == 'travel') {
+            $("#btn1t").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[0], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours1t").html() == "NOW CLOSED") {
+                  $("#btn1t").attr("data-target", "#myModal");
+                  $("#btn1t").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn2t").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[1], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours2t").html() == "NOW CLOSED") {
+                  $("#btn2t").attr("data-target", "#myModal");
+                  $("#btn2t").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn3t").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[2], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours3t").html() == "NOW CLOSED") {
+                  $("#btn3t").attr("data-target", "#myModal");
+                  $("#btn3t").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn4t").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[3], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours4t").html() == "NOW CLOSED") {
+                  $("#btn4t").attr("data-target", "#myModal");
+                  $("#btn4t").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+          } else if (tag == 'entertainment') {
+            $("#btn1e").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[0], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours1e").html() == "NOW CLOSED") {
+                  $("#btn1e").attr("data-target", "#myModal");
+                  $("#btn1e").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn2e").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[1], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours2e").html() == "NOW CLOSED") {
+                  $("#btn2e").attr("data-target", "#myModal");
+                  $("#btn2e").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn3e").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[2], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours3e").html() == "NOW CLOSED") {
+                  $("#btn3e").attr("data-target", "#myModal");
+                  $("#btn3e").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+            $("#btn4e").click(function() {
+                var val = (jQuery.parseJSON(JSON.stringify(results[3], null, 4))).vicinity;
+                val = val.replace(/ /g,'');
+                url = './directions.html?name=' + val;
+                if ($("#hours4e").html() == "NOW CLOSED") {
+                  $("#btn4e").attr("data-target", "#myModal");
+                  $("#btn4e").attr("data-toggle", "modal");
+                  $("#goto").click(function() {
+                    document.location.href=url;
+                  });
+                } else {
+                  document.location.href = url;
+                };
+            });
+          };
+        }
+        // alert(test);
+        function getPic(place_id) {
+          var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
+            center: new google.maps.LatLng(-33.8665433, 151.1956316),
+            zoom: 15
+          });
+          var request = {
+            placeId: place_id
+          };
+          var servicer = new google.maps.places.PlacesService(mapr);
+          servicer.getDetails(request, function(place, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+             // $("#jsonq").html(JSON.stringify(place, null, 4) + '<br/>');
+              var p = place.photos;
+              return (p[0].getUrl({'maxWidth': 5000, 'maxHeight': 5000}));
+            }     
+          });
+        }
+
+        <!-- fade page onload -->
+        $(document).ready(function(){
+          function scrollTrigger(elemId, callback) {
+              var lastClassName = $(elemId).val();
+              window.setInterval( function() {   
+                 var className = $(elemId).val(); 
+                  if (className !== lastClassName) {
+                          setTimeout(function(){ 
+                              callback(); 
+                          }, 500); 
+                    lastClassName = className;
+                  }
+              },10);
+          }
+          scrollTrigger("#name", function(){
+            window.scrollBy(0,5000);
+          });
+        });
+        <!-- fade login form to color on hover -->
+        $(document).ready(function(){
+        $("#find").hover(
+          function() {
+              // $("#find").css("backgroundColor","#303136");
+              // $("#find").css("color","white");
+              $(this).toggleClass('findhover');
+          });
+        });
+        $(document).ready(function() {
+          function map(val) {
+              // var b = document.getElementById('name').value;
+              val = val.replace(/ /g,'');
+              url = './directions.html?name=' + val;
+              document.location.href = url;
+          }
+          $("#find").click(
+          function() {
+              var b = document.getElementById('name').value;
+              map(b);
+          });
+           $('#name').keypress(function (e) {
+             var key = e.which;
+             if(key == 13)  // the enter key code
+              {
+                  var b = document.getElementById('name').value;
+                  map(b);
+              }
+          }); 
+      });
+
+
+
+        //HAVE USER WRITE STREET NAME, CITY, AND STATE IN SEPERATE FIELDS AND THEN FORM THE ADDRESS WICH WILL BE PASSED INTO THE DIRECTIONS API
+        // google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <div id="map-canvas-new"></div>
+<!--     <p id="json"></p> -->
+<!--     <p id="jsonq"></p> -->
+    <div id="cf" class="container-fluid">
+    <div class="row">
+        <h2 id="title"><b>CHOOSE FROM POPULAR DESTINATIONS BY CATEGORY...</b></h2>
+    </div>
+    <div id="tabsdiv">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="tab" id="resttab">RESTAURANT<i class="glyphicon glyphicon-cutlery"></i> </a></li>
+        <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="tab">ENTERTAINMENT<i class="glyphicon glyphicon-glass"></i></a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="tab">GROCERY<i class="glyphicon glyphicon-apple"></i></a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" class="tab">SHOPPING<i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+        <li role="presentation"><a href="#travel" aria-controls="travel" role="tab" data-toggle="tab" class="tab">TRAVEL<i class="glyphicon glyphicon-plane"></i></a></li>
+        <li role="presentation"><a href="#conveniece" aria-controls="convenience" role="tab" data-toggle="tab" class="tab">CONVENIENCE<i class="glyphicon glyphicon-road"></i></a></li>
+        <li role="presentation"><a href="#care" aria-controls="care" role="tab" data-toggle="tab" class="tab">CARE<i class="glyphicon glyphicon-plus"></i></a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <div class="row" id="homerow">
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic1" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname"></p>
+                            <p class="bordblocktext" id="hours1">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn1"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic2" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname2"></p>
+                            <p class="bordblocktext" id="hours2">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn2"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic3" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname3"></p>
+                            <p class="bordblocktext" id="hours3">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn3"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic4" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname4"></p>
+                            <p class="bordblocktext" id="hours4">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn4"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+          <div class="row" id="entertainmentrow">
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic1e" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restnamee"></p>
+                            <p class="bordblocktext" id="hours1e">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn1e"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic2e" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname2e"></p>
+                            <p class="bordblocktext" id="hours2e">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn2e"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic3e" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname3e"></p>
+                            <p class="bordblocktext" id="hours3e">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn3e"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic4e" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname4e"></p>
+                            <p class="bordblocktext" id="hours4e">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn4e"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">...</div>
+        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        <div role="tabpanel" class="tab-pane" id="travel">
+          <div class="row" id="travelrow">
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic1t" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restnamet"></p>
+                            <p class="bordblocktext" id="hours1t">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn1t"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic2t" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname2t"></p>
+                            <p class="bordblocktext" id="hours2t">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn2t"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic3t" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname3t"></p>
+                            <p class="bordblocktext" id="hours3t">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn3t"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="media">
+                  <div class="row rect" >
+                      <img id="rpic4t" class="center-block bord img-responsive" src="" alt="PHOTO NOT AVAILABLE"/> 
+                      <div class="center-block bordblock">
+                            <p class="white">.</p>
+                            <p class="bordblocktext title text-uppercase" id="restname4t"></p>
+                            <p class="bordblocktext" id="hours4t">HOURS NOT AVAILABLE</p>  
+                            <p class="white">.</p>                     
+                      </div>
+                      <div class="buttondiv">
+                        <button class="gobutton btn btn-block" id="btn4t"><span class="bold">CARPOOL HERE</span></button>                      
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+        </div>
+        <div role="tabpanel" class="tab-pane" id="convenience">...</div>
+        <div role="tabpanel" class="tab-pane" id="care">.HOME :)</div>
+        </div>
+    </div>
+    <div id="line"></div>
+    <div class="row">
+        <h2 id="title2"><b>...OR ENTER THE ADDRESS OF YOUR DESINATION:</b></h2>
+    </div>
+    <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter your Destination Address" name="name" id="name">
+                <div class="input-group-btn">
+                    <button class="btn " type="submit" id="find"><i class="glyphicon glyphicon-search" id="glpy"></i></button>
+                </div>
+    </div>
+    <h1></h1>
+	<div id="myModal" class="modal fade" role="dialog">
+      	<div class="modal-dialog">
+        <!-- Modal content-->
+      		<div class="modal-content">
+          		<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Wait, hold up!</h4>
+          		</div>
+          		<div class="modal-body">
+            		<p>This place is closed. Are you sure you want to carpool here?</p>
+        		</div>      
+          		<div class="modal-footer">
+            		<button type="button" class="btn btn-success" id="goto"><b>Contine Anyways</b></button>
+          		</div>
+      		</div>
+  		</div>
+	</div>
+
+    <script type="text/javascript">
+            // $("#resttab").click(
+            // function() {
+            //   $("#home").fadeIn(500);
+
+            // });
+        document.onload = function() {
+           if ($("#restname").text().length > 20) {
+          $("#restname").css("font-size","0.75em");
+          };
+          if ($("#restname2").text().length > 20) {
+            alert("here");
+            $("#restname2").css("font-size","0.75em");
+          };
+          if ($("#restname3").text().length > 20) {
+            alert("here");
+            $("#restname3").css("font-size","0.75em");
+          };
+          if ($("#restname4").text().length > 20) {
+            $("#restname4").css("font-size","0.75em");
+          };       
+        }
+    </script>
+  </body>
+</html>

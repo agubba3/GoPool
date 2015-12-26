@@ -16,14 +16,14 @@
         <script src="app.js"></script>
 		<link rel="stylesheet" type="text/css" href="apicss.css">
     </head>    
-    <body>
+    <body ng-cloak class="ng-cloak">
         <div id="map-canvas"></div>
         <div id="map-canvas-new"></div>
 		<div id="cf" class="container-fluid">
 			<div class="row">
 				<h2 id="title"><b>CHOOSE FROM POPULAR DESTINATIONS BY CATEGORY...</b></h2>
 			</div>
-			<div id="tabsdiv">
+			<div id="tabsdiv" >
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="tab" id="resttab">RESTAURANT<i class="glyphicon glyphicon-cutlery"></i> </a></li>
 					<li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="tab">ENTERTAINMENT<i class="glyphicon glyphicon-glass"></i></a></li>
@@ -33,7 +33,7 @@
 					<li role="presentation"><a href="#conveniece" aria-controls="convenience" role="tab" data-toggle="tab" class="tab">CONVENIENCE<i class="glyphicon glyphicon-road"></i></a></li>
 					<li role="presentation"><a href="#care" aria-controls="care" role="tab" data-toggle="tab" class="tab">CARE<i class="glyphicon glyphicon-plus"></i></a></li>
 				</ul>
-				<div class="tab-content">
+				<div class="tab-content" ng-cloak class="ng-cloak">
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<div data-ng-controller="BoxController" class="whole" id="whole">
 							<ul class="bxslider" data-bx-slider="mode: 'horizontal', pager: true, adaptiveHeight: true, controls: true, minSlides: 1, maxSlides:4, slideWidth: 325, slideMargin:5, infiniteLoop: false">

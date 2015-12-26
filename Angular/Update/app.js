@@ -5,7 +5,7 @@ app.controller('BoxController', ['$scope', function ($scope) {
 			// 39.1833, -77.2667
 			//poolesville - 39.1406, -77.4083
 			//atlanta - 33.7550, -84.3900
-			var pyrmont = new google.maps.LatLng(33.7550, -84.3900	); //INPUT USER LOCATION HERE
+			var pyrmont = new google.maps.LatLng(40.7127, -74.0059	); //INPUT USER LOCATION HERE
 			var map = new google.maps.Map(document.getElementById('map-canvas'), {
 				center: pyrmont,
 				zoom: 15
@@ -37,9 +37,14 @@ app.controller('BoxController', ['$scope', function ($scope) {
 			});	
 		}
 		var i = 0;
+		var map = {};
 		$scope.pic = function pic(place_id) {
-			i = i + 1;
-			console.log("Doing " + i + " " + place_id + i);
+			if(place_id in map) {
+				return;
+			}
+			console.log('-------------------------------------------------');
+			// i = i + 1;
+			// console.log("Doing " + i + " " + place_id + i);
 			var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
 				center: new google.maps.LatLng(0, 0), //irrevalent
 				zoom: 15
@@ -56,9 +61,10 @@ app.controller('BoxController', ['$scope', function ($scope) {
 							'maxWidth': 5000,
 							'maxHeight': 215
 						});
+						map[place_id] = piclink;
 						$scope.$apply(function() {
 							var places = $scope.places;
-							console.log(piclink);
+							console.log('Pic Link: ' + piclink);
 							for (var i = 0; i < places.length; i++) {
 								var p = places[i];
 								if (p.place_id == place_id) {
@@ -70,16 +76,13 @@ app.controller('BoxController', ['$scope', function ($scope) {
 					} 
 				} 
 			});
-			// return '';
 		}
 		$scope.time = function time(place) {
 			if(place.opening_hours != undefined && place.opening_hours.open_now) {
-				// $("#hours1").css("color","green");
 				return "NOW OPEN";
 			} else if (place.opening_hours != undefined && !place.opening_hours.open_now) {
 				return "NOW CLOSED";
 			} else {
-				// $("#hours1").css("color","green");
 				return "ALWAYS OPEN";
 			}
 		}

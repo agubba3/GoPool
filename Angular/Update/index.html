@@ -33,14 +33,14 @@
 					<li role="presentation"><a href="#conveniece" aria-controls="convenience" role="tab" data-toggle="tab" class="tab">CONVENIENCE<i class="glyphicon glyphicon-road"></i></a></li>
 					<li role="presentation"><a href="#care" aria-controls="care" role="tab" data-toggle="tab" class="tab">CARE<i class="glyphicon glyphicon-plus"></i></a></li>
 				</ul>
-				<div class="tab-content" ng-cloak class="ng-cloak">
+				<div class="tab-content" ng-cloak class="ng-cloak" ng-hide="false">
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<div data-ng-controller="BoxController" class="whole" id="whole">
-							<ul class="bxslider" data-bx-slider="mode: 'horizontal', pager: true, adaptiveHeight: true, controls: true, minSlides: 1, maxSlides:4, slideWidth: 325, slideMargin:5, infiniteLoop: false">
+							<ul class="bxslider" data-bx-slider="mode: 'horizontal', pager: true, adaptiveHeight: true, controls: true, minSlides: 1, maxSlides:4, slideWidth: 325, slideMargin:5, infiniteLoop: false" ng-hide="false">
 								<li data-ng-repeat="place in places" data-notify-when-repeat-finished score-class>
 									{{pic(place.place_id)}} 
 									<div class="media">
-										<div class="row rect" id="whole">
+										<div class="row {{place.borderclass}}" id="whole">
 											<img id="rpic1" class="center-block bord img-responsive" src="{{place.piclink}}" alt="PHOTO NOT AVAILABLE"/>
 											<div class="center-block bordblock">
 												<p class="white">.</p>

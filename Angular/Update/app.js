@@ -1,9 +1,8 @@
 var app = angular.module('plunker', []);
 
 app.controller('BoxController', ['$scope', function ($scope) {
+		
 		function initialize(types) {
-			// 39.1833, -77.2667
-			//poolesville - 39.1406, -77.4083
 			//atlanta - 33.7550, -84.3900
 			var pyrmont = new google.maps.LatLng(40.7127, -74.0059	); //INPUT USER LOCATION HERE
 			var map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -31,6 +30,12 @@ app.controller('BoxController', ['$scope', function ($scope) {
 				for (var i = 0; i < results.length; i++) {
 					var place = results[i];
 					place.piclink = 'http://www.munkytradingco.com/wp-content/uploads/2014/04/placeholder3.png';
+					place.id = i + 1;
+					if(i != 0 && (i % 3 == 0)) {
+						place.borderclass = 'specialrect';
+					} else {
+						place.borderclass = 'rect';					
+					}
 					places.push(place);
 				}
 				$scope.places = places;

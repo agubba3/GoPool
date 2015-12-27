@@ -1,10 +1,46 @@
 var app = angular.module('plunker', []);
 
-app.controller('BoxController', ['$scope', function ($scope) {
+app.controller('alternatesearch',['$scope', function($scope) {
+		//ng model was not working/updating	
+        $(document).ready(function() {
+          function map(val) {
+              // var b = document.getElementById('name').value;
+              val = val.replace(/ /g,'');
+              url = './directions.html?name=' + val;
+              document.location.href = url;
+          }
+          $("#find").click(
+          function() {
+              var b = document.getElementById('name').value;
+              map(b);
+          });
+           $('#name').keypress(function (e) {
+             var key = e.which;
+             if(key == 13)  // the enter key code
+              {
+                  var b = document.getElementById('name').value;
+                  map(b);
+              }
+          }); 
+      });
 		
+}]);
+
+app.controller('BoxController', ['$scope', function ($scope) {
+		var autocomplete;
 		function initialize(types) {
 			//atlanta - 33.7550, -84.3900
 			var pyrmont = new google.maps.LatLng(40.7127, -74.0059	); //INPUT USER LOCATION HERE
+			
+			autocomplete = new google.maps.places.Autocomplete(
+				/** @type {HTMLInputElement} */(document.getElementById('name')),
+				{ types: ['geocode'] });
+			// When the user selects an address from the dropdown,
+			// populate the address fields in the form.
+			google.maps.event.addListener(autocomplete, 'place_changed', function() {
+				fillInAddress();
+			});
+			
 			var map = new google.maps.Map(document.getElementById('map-canvas'), {
 				center: pyrmont,
 				zoom: 15
@@ -82,6 +118,25 @@ app.controller('BoxController', ['$scope', function ($scope) {
 				} 
 			});
 		}
+		
+        $(document).ready(function(){
+          function scrollTrigger(elemId, callback) {
+              var lastClassName = $(elemId).val();
+              window.setInterval( function() {   
+                 var className = $(elemId).val(); 
+                  if (className !== lastClassName) {
+                          setTimeout(function(){ 
+                              callback(); 
+                          }, 500); 
+                    lastClassName = className;
+                  }
+              },10);
+          }
+          scrollTrigger("#name", function(){
+            window.scrollBy(0,5000);
+          });
+        });
+		
 		$scope.time = function time(place) {
 			if(place.opening_hours != undefined && place.opening_hours.open_now) {
 				return "NOW OPEN";
@@ -140,7 +195,7 @@ app.directive('bxSlider', [function () {
 }])
 .directive('clicked', function () {
     var linkFn = function (scope, element, attrs) {
-        $(element).on('click', 'button', function () {
+        $(element).on('click',  function () {
 			var val = scope.place.vicinity;
             val = val.replace(/ /g,'');
             url = './directions.html?name=' + val;

@@ -60,10 +60,10 @@
 				</div>	
 			</div>
 			<div id="line"></div>	
-			<div class="input-group enterdest">
-						<input type="text" class="form-control" placeholder="...OR Enter your Destination Address" name="name" id="name">
+			<div class="input-group enterdest" ng-controller="alternatesearch">
+						<input type="text" class="form-control" ng-model="inputaddress" placeholder="...OR Enter your Destination Address" name="name" id="name">
 						<div class="input-group-btn">
-							<button class="btn " type="submit" id="find"><i class="glyphicon glyphicon-search" id="glpy"></i></button>
+							<button ng-click="calladdress()" class="btn " type="submit" id="find"><i class="glyphicon glyphicon-search" id="glpy"></i></button>
 						</div>
 			</div>
 		</div> 

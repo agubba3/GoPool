@@ -1,5 +1,7 @@
 var app = angular.module('plunker', []);
 
+// window.onload = function () { alert("It's loaded!") }
+
 app.controller('alternatesearch',['$scope', function($scope) {
 		//ng model was not working/updating	
         $(document).ready(function() {
@@ -26,7 +28,8 @@ app.controller('alternatesearch',['$scope', function($scope) {
 		
 }]);
 
-app.controller('BoxController', ['$scope', function ($scope) {
+app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeout) {
+		NProgress.start();
 		var autocomplete;
 		function initialize(types) {
 			//atlanta - 33.7550, -84.3900
@@ -62,7 +65,7 @@ app.controller('BoxController', ['$scope', function ($scope) {
 		function callback(results, status) {
 			console.log(results);
 			$scope.$apply(function() {
-				var places = [];
+				var placess = [];
 				for (var i = 0; i < results.length; i++) {
 					var place = results[i];
 					place.piclink = 'http://www.munkytradingco.com/wp-content/uploads/2014/04/placeholder3.png';
@@ -72,20 +75,22 @@ app.controller('BoxController', ['$scope', function ($scope) {
 					} else {
 						place.borderclass = 'rect';					
 					}
-					places.push(place);
+					placess.push(place);
 				}
-				$scope.places = places;
+				$scope.places = placess;
+				$scope.placestemp = placess;
 			});	
 		}
 		var i = 0;
 		var map = {};
 		$scope.pic = function pic(place_id) {
+			
 			if(place_id in map) {
 				return;
 			}
 			console.log('-------------------------------------------------');
-			// i = i + 1;
-			// console.log("Doing " + i + " " + place_id + i);
+			i = i + 1;
+			console.log("Doing " + i + " " + place_id + i);
 			var mapr = new google.maps.Map(document.getElementById('map-canvas-new'), {
 				center: new google.maps.LatLng(0, 0), //irrevalent
 				zoom: 15
@@ -104,7 +109,7 @@ app.controller('BoxController', ['$scope', function ($scope) {
 						});
 						map[place_id] = piclink;
 						$scope.$apply(function() {
-							var places = $scope.places;
+							var places = $scope.placestemp;
 							console.log('Pic Link: ' + piclink);
 							for (var i = 0; i < places.length; i++) {
 								var p = places[i];
@@ -117,7 +122,28 @@ app.controller('BoxController', ['$scope', function ($scope) {
 					} 
 				} 
 			});
-		}
+		};	
+		
+		$scope.stillloading = true;
+		var t = window.setInterval(function(){
+			check();
+		}, 200);
+		
+			
+		function check() {
+			$timeout(function() {
+				var oldi = i;
+				$timeout(function() {
+					var currenti = i;
+					console.log("Old i: " + oldi);
+					console.log("New i: " + currenti);
+					if(oldi + 1 === currenti || oldi + 2 === currenti) {
+						$scope.stillloading = false;
+						clearInterval(t);
+					}
+				}, 100);
+			}, 100);	
+		};
 		
         $(document).ready(function(){
           function scrollTrigger(elemId, callback) {
@@ -166,7 +192,8 @@ app.controller('BoxController', ['$scope', function ($scope) {
 			} else {
 				return "open";
 			}
-		}
+		}		
+		
 }]);
 
 app.directive('bxSlider', [function () {
@@ -176,6 +203,12 @@ app.directive('bxSlider', [function () {
             scope.$on('repeatFinished', function () {
                 console.log("ngRepeat has finished");
                 element.bxSlider(scope.$eval('{' + attrs.bxSlider + '}'));
+				var t = window.setInterval(function(){
+					if(scope.stillloading) {
+						element.startAuto();
+						NProgress.done();
+					}
+				}, 50);
             });
         }
     }

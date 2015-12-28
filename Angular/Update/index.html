@@ -11,8 +11,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <link href="http://bxslider.com/lib/jquery.bxslider.css" rel="stylesheet" />
+		<link href="http://ricostacruz.com/nprogress/nprogress.css" rel="stylesheet" />
         <script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
         <script src="http://code.angularjs.org/1.2.3/angular.js"></script>
+		<script src="http://ricostacruz.com/nprogress/nprogress.js"></script>
+		<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
         <script src="app.js"></script>
 		<link rel="stylesheet" type="text/css" href="apicss.css">
     </head>    
@@ -33,16 +36,16 @@
 					<li role="presentation"><a href="#conveniece" aria-controls="convenience" role="tab" data-toggle="tab" class="tab">CONVENIENCE<i class="glyphicon glyphicon-road"></i></a></li>
 					<li role="presentation"><a href="#care" aria-controls="care" role="tab" data-toggle="tab" class="tab">CARE<i class="glyphicon glyphicon-plus"></i></a></li>
 				</ul>
-				<div class="tab-content" ng-cloak class="ng-cloak" ng-hide="false">
+				<div class="tab-content" ng-cloak class="ng-cloak">
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<div data-ng-controller="BoxController" class="whole" id="whole">
-							<ul class="bxslider" data-bx-slider="mode: 'horizontal', pager: true, adaptiveHeight: true, controls: true, minSlides: 1, maxSlides:4, slideWidth: 325, slideMargin:5, infiniteLoop: false" ng-hide="false">
-								<li data-ng-repeat="place in places" data-notify-when-repeat-finished score-class>
+							<ul class="bxslider" data-bx-slider="mode: 'horizontal', pager: true, adaptiveHeight: true, responsive: true, auto: true, autoStart: false, controls: true, minSlides: 1, maxSlides:4, slideWidth: 325, slideMargin:5" style="padding: 0;" ng-hide=stillloading>
+								<li data-ng-repeat="place in places" data-notify-when-repeat-finished score-class >
 									{{pic(place.place_id)}} 
 									<div class="media">
 										<div class="row {{place.borderclass}}" id="whole">
-											<img id="rpic1" class="center-block bord img-responsive" src="{{place.piclink}}" alt="PHOTO NOT AVAILABLE"/>
-											<div class="center-block bordblock">
+											<img id="rpic1" class="center-block bord img-responsive" src="{{place.piclink}}" alt="PHOTO NOT AVAILABLE" />
+											<div class="center-block bordblock" >
 												<p class="white">.</p>
 												<p class="bordblocktexts {{format(place)}} text-uppercase">{{place.name}}</p>
 												<p class="bordblocktexts {{scoreClass(place)}}" id="hours1">{{time(place)}}</p> 

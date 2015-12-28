@@ -21,6 +21,7 @@
           background: rgba(79, 88, 93, 0.2);
 		  margin-left: 5px;
 		  margin-right:-5px;
+		  z-index: 
       }
       .nav-tabs > li > a{
         border: medium none;

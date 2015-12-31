@@ -1,3 +1,0 @@
-Ways to Optimize site with Angular:
--Login automated message display and binding
--Find search address error message display

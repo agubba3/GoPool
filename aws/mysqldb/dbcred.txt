@@ -1,2 +1,5 @@
-Username: gopool
+DB Instance identifier: gopool
+DB Name: gopooldb
+DB Port: 3306
+Username: gopool_master
 Password: saltyswoleman18

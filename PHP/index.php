@@ -1,6 +1,6 @@
 <?php  
 	header("Content-Tyoe: application/json");
-	
+
 	if(!empty($_GET['user']) && !empty($_GET['pass'])) {
 		$arrvar = get_profile($_GET['user'], $_GET['pass']);
 		if(empty($arrvar)) {

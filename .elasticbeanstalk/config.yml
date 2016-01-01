@@ -1,10 +1,11 @@
 branch-defaults:
   master:
-    environment: null
+    environment: dev-env
+    group_suffix: null
 global:
-  application_name: GoPool
-  default_ec2_keyname: agubba3
-  default_platform: 64bit Amazon Linux 2015.09 v2.0.4 running PHP 5.6
-  default_region: us-east-1
+  application_name: SaltPool
+  default_ec2_keyname: null
+  default_platform: PHP
+  default_region: us-west-2
   profile: eb-cli
   sc: git

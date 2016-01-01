@@ -127,7 +127,7 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 		$scope.stillloading = true;
 		var t = window.setInterval(function(){
 			check();
-		}, 200);
+		}, 300);
 		
 			
 		function check() {
@@ -141,8 +141,8 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 						$scope.stillloading = false;
 						clearInterval(t);
 					}
-				}, 100);
-			}, 100);	
+				}, 150);
+			}, 150);	
 		};
 		
         $(document).ready(function(){
@@ -208,7 +208,7 @@ app.directive('bxSlider', [function () {
 						element.startAuto();
 						NProgress.done();
 					}
-				}, 50);
+				}, 100);
             });
         }
     }

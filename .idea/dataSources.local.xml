@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="gopooldb" uuid="6c735167-a20a-4ef1-95a1-95bb5ab03880">
+      <secret-storage>master_key</secret-storage>
+      <user-name>gopool_master</user-name>
+      <schema-pattern>gopooldb.*</schema-pattern>
+      <default-schemas>gopooldb.*</default-schemas>
+    </data-source>
+  </component>
+</project>

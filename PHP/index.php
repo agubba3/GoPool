@@ -10,7 +10,7 @@
 		$arrvar = get_profile($_GET['email'], $_GET['pass']);
 		if(empty($arrvar)) {
 			//user not found
-			deliver_response(200, "User not found", NULL);
+			deliver_response(400, "Invalid username or password", NULL);
 		} else {
 			//respond with user info
 			deliver_response(200, "User found", $arrvar);
@@ -60,6 +60,10 @@
 		// }
 		// return $ret;
 	}
+
+    function show_available_rides() {
+
+    }
 	
 	function deliver_response($status, $status_message, $dataarray) {
 		//contains status message and actual data

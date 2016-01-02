@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c91c84d-1d4d-413b-b880-985a03a84e81" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PHP/base.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PHP/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PHP/index.php" afterPath="$PROJECT_DIR$/PHP/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PHP/register.php" afterPath="$PROJECT_DIR$/PHP/register.php" />
     </list>
     <ignored path="GoPool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,10 +56,10 @@
       <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PHP/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5479452">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.34246576">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
-                <marker date="1451758426000" expanded="true" signature="471:636" placeholder="INSERT INTO User..." />
+                <marker date="1451762598000" expanded="true" signature="471:636" placeholder="INSERT INTO User..." />
               </folding>
             </state>
           </provider>
@@ -328,10 +324,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PHP/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5479452">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.34246576">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
-            <marker date="1451758426000" expanded="true" signature="471:636" placeholder="INSERT INTO User..." />
+            <marker date="1451762598000" expanded="true" signature="471:636" placeholder="INSERT INTO User..." />
           </folding>
         </state>
       </provider>

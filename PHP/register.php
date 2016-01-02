@@ -15,9 +15,15 @@ if (!empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["e
         VALUES (:first_name, :last_name, :email, :password, :university,
         :major);";
     $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-    $st->execute(array(':first_name' => $first_name, ':last_name' => $last_name, ':email' => $email, ':password' => $password,
-        ':university' => $university, ':major' => $major));
-    deliver_response(200, "Success");
+    try {
+        $st->execute(array(':first_name' => $first_name, ':last_name' => $last_name, ':email' => $email, ':password' => $password,
+            ':university' => $university, ':major' => $major));
+    } catch (PDOException $e) {
+        deliver_response(400, $e->getMessage());
+    }
+    if($st->rowCount() != 0) {
+        deliver_response(200, "Success");
+    }
 } else {
     deliver_response(400, "Missing a parameter");
 }

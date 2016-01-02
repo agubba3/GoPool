@@ -1,4 +1,5 @@
-<?php  
+<?php
+require 'base.php';
 
 	// require('Connection.php');
 	ini_set('error_reporting', E_ALL);
@@ -19,7 +20,7 @@
 		//invalid request
 		deliver_response(400, "Invalid request", NULL);
 	}
-	
+
 	function get_profile($email, $pass) {
 		
 		$servername = "gopool.cklcxx7fvgfc.us-west-2.rds.amazonaws.com:3306";
@@ -60,10 +61,6 @@
 		// }
 		// return $ret;
 	}
-
-    function show_available_rides() {
-
-    }
 	
 	function deliver_response($status, $status_message, $dataarray) {
 		//contains status message and actual data

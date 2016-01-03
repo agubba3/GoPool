@@ -1,6 +1,5 @@
 <?php
 require 'base.php';
-
 	// require('Connection.php');
 	ini_set('error_reporting', E_ALL);
 	ini_set('display_errors', 1);
@@ -14,6 +13,7 @@ require 'base.php';
 			deliver_response(400, "Invalid username or password", NULL);
 		} else {
 			//respond with user info
+            $_SESSION["email"] = $_GET["email"];
 			deliver_response(200, "User found", $arrvar);
 		}
 	} else {

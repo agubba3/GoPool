@@ -20,7 +20,7 @@ function deliver_response($status, $status_message, $dataarray) {
     header("HTTP/1.1 $status $status_message");
     $response['status'] = $status;
     $response['status_message'] = $status_message;
-    $response['profile'] = $dataarray;
+    $response['rides'] = $dataarray;
 
     $json_response = json_encode($response);
     echo $json_response;

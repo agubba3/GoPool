@@ -100,6 +100,33 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         print $e;
     }
 }
+else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST["university"]) && isset($_POST["major"])
+    && isset($_POST["first_name"]) && isset($_POST["last_name"])) {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['r_email'];
+    $password = $_POST['r_password'];
+    $university = $_POST['university'];
+    $major = $_POST['major'];
+
+    $sql = "INSERT INTO User (first_name, last_name, email, password, university, major)
+        VALUES (:first_name, :last_name, :email, :password, :university,
+        :major);";
+    $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    try {
+        $st->execute(array(':first_name' => $first_name, ':last_name' => $last_name, ':email' => $email, ':password' => $password,
+            ':university' => $university, ':major' => $major));
+    } catch (PDOException $e) {
+        print $e;
+    }
+    if ($st->rowCount()) {
+        header('Location: index.php');
+    } else {
+        print "Invalid parameter";
+    }
+} else {
+    print "Internal error. Try Again.";
+}
 ?>
 <div class="container">
     <h1 id="title"><b>GoPool</b> <small>Go anywhere. Real cheap.</small></h1>
@@ -133,14 +160,23 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
             </div>
             <div class="modal-body">
                 <p>Enter your basic information and start riding.</p>
-                <form class="form-horizontal" role="form">
+
+                <form class="form-horizontal" method="post">
                     <div class="inner-addon left-addon" id="user">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="email" class="form-control" placeholder = "Enter your email"/>
+                        <input type="text" class="form-control" name="first_name" placeholder = "Enter your First Name"/>
+                    </div>
+                    <div class="inner-addon left-addon" id="user">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="text" class="form-control" name="last_name" placeholder = "Enter your Last Name"/>
+                    </div>
+                    <div class="inner-addon left-addon" id="user">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="email" class="form-control" name="r_email" placeholder = "Enter your email"/>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control" placeholder = "Choose a password"/>
+                        <input type="password" class="form-control" name="r_password" placeholder = "Choose a password"/>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-lock"></i>
@@ -148,22 +184,19 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-education"></i>
-                        <input type="text" class="form-control" placeholder = "College/University"/>
+                        <input type="text" class="form-control" name="university" placeholder = "College/University"/>
                     </div>
-                    <div class="dropdown" id="drop">
-                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span id="privacy-icon" class="glyphicon glyphicon-book" style="padding-right:10px;"></span>Select Major (Optional)
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Engineering</a></li>
-                            <li><a href="#">Liberal Arts</a></li>
-                            <li><a href="#">Computer Science</a></li>
-                            <li><a href="#">Sciences</a></li>
-                        </ul>
+                    <select name="major" class="browser-default">
+                        <option disabled selected value="">Major</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Liberal Arts">Liberal Arts</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Sciences">Sciences</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" id="submit"><b>Register</b></button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success"><b>Submit</b></button>
             </div>
         </div>
     </div>

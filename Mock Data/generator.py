@@ -6,10 +6,10 @@ print sheet['H2'].value
 for i in range(2, 66):
 	insertPref = "INSERT INTO User"
 	valuesPref = "VALUES ("
-	for c in range(0, 12):
+	for c in range(0, 11):
 		ch = chr(ord('A') + c)
 		col = ch + str(i)
-		if c != 11:
+		if c != 10:
 			if sheet[col].value == None:
 				valuesPref += "NULL" + ","
 			else:

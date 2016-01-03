@@ -10,7 +10,6 @@ if (!empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["e
     $university = $_GET['university'];
     $major = $_GET['major'];
 
-
     $sql = "INSERT INTO User (first_name, last_name, email, password, university, major)
         VALUES (:first_name, :last_name, :email, :password, :university,
         :major);";

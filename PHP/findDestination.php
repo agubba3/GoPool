@@ -4,9 +4,9 @@ header("Content-Type: application/json");
 if(isset($_GET["destination"]) && !empty($_GET["destination"])) {
     $location = $_GET["destination"];
 
-    $sql = "SELECT destination, origin, driver_email, ride_id, first_name, last_name, email, university, major, vehicle_model, vehicle_color, vehicle_year, vehicle_image, vehicle_capacity
-            FROM Requested_Rides JOIN User
-            WHERE destination = :destination AND driver_email = User.email;";
+    $sql = "SELECT *
+            FROM Available_Rides JOIN User
+            WHERE destination = :destination and driver_email = User.email;";
     $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $st->execute(array(':destination' => $location));
     $rides = $st->fetchAll();

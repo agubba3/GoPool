@@ -1,24 +1,23 @@
 <?php
+require 'base.php';
 /**
  * Created by PhpStorm.
  * User: nikhilkulkarni
  * Date: 1/3/16
  * Time: 1:56 PM
  */
-require 'base.php';
+if (!empty($_GET["email"])) {
+    $driver_email = $_GET["email"];
 
-$parameters = array();
-$body = file_get_contents('php://input');
-$body_params = json_decode($body);
-if ($body_params) {
-    foreach ($body_params as $param_name => $param_value) {
-        $parameters[$param_name] = $param_value;
-    }
-    $sql = "INSERT INTO Available_Rides
-            VALUES (:destination, :origin, :email);";
+    $sql = "DELETE
+            FROM Available_Rides
+            WHERE driver_email = :email;
+            DELETE
+            FROM Current_Rides
+            WHERE driver_email = :email and is_accepted = false;";
     $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     try {
-        $st->execute(array(':destination' => $parameters["destination"], ':email' => $parameters["email"], ':origin' => $parameters["origin"]));
+        $st->execute(array(':email' => $driver_email));
     } catch (PDOException $e) {
         deliver_response(400, $e->getMessage());
     }
@@ -26,7 +25,7 @@ if ($body_params) {
         deliver_response(200, "Success");
     }
 } else {
-    deliver_response(400, "Invalid Request");
+    deliver_response(400, "Invalid request");
 }
 
 function deliver_response($status, $status_message) {
@@ -37,4 +36,3 @@ function deliver_response($status, $status_message) {
     $json_response = json_encode($response);
     echo $json_response;
 }
-?>

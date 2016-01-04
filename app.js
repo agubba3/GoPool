@@ -1,7 +1,5 @@
 var app = angular.module('plunker', []);
 
-// window.onload = function () { alert("It's loaded!") }
-
 app.controller('alternatesearch',['$scope', function($scope) {
 		//ng model was not working/updating	
         $(document).ready(function() {
@@ -30,10 +28,41 @@ app.controller('alternatesearch',['$scope', function($scope) {
 
 app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeout) {
 		NProgress.start();
+		
+		$scope.stillloading = true;
+		// window.onload = function () { $scope.stillloading = false; } //no longer loading
+		
+		// function initMap() {
+		
+		// // Try HTML5 geolocation.
+		// if (navigator.geolocation) {
+		// 	navigator.geolocation.getCurrentPosition(function(position) {
+		// 	var pos = {
+		// 		lat: position.coords.latitude,
+		// 		lng: position.coords.longitude
+		// 	};
+		// 	console.log(pos);
+		// 	}, function() {
+		// 	handleLocationError(true, infoWindow, map.getCenter());
+		// 	});
+		// } else {
+		// 	// Browser doesn't support Geolocation
+		// 	handleLocationError(false, infoWindow, map.getCenter());
+		// }
+		// }
+		
+		// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		// infoWindow.setPosition(pos);
+		// infoWindow.setContent(browserHasGeolocation ?
+		// 						'Error: The Geolocation service failed.' :
+		// 						'Error: Your browser doesn\'t support geolocation.');
+		// }
+
 		var autocomplete;
 		function initialize(types) {
 			//atlanta - 33.7550, -84.3900
-			var pyrmont = new google.maps.LatLng(40.7127, -74.0059	); //INPUT USER LOCATION HERE
+						//NY - 40.7127, -74.0059
+			var pyrmont = new google.maps.LatLng(33.7550, -84.3900); //INPUT USER LOCATION HERE
 			
 			autocomplete = new google.maps.places.Autocomplete(
 				/** @type {HTMLInputElement} */(document.getElementById('name')),
@@ -124,10 +153,11 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 			});
 		};	
 		
-		$scope.stillloading = true;
+
 		var t = window.setInterval(function(){
+			// alert("Check");
 			check();
-		}, 300);
+		}, 200);
 		
 			
 		function check() {
@@ -137,12 +167,13 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 					var currenti = i;
 					console.log("Old i: " + oldi);
 					console.log("New i: " + currenti);
-					if(oldi + 1 === currenti || oldi + 2 === currenti) {
+					// alert("Here");
+					if(oldi + 5 < currenti || oldi - 5 > currenti) {
 						$scope.stillloading = false;
 						clearInterval(t);
 					}
-				}, 150);
-			}, 150);	
+				}, 100);
+			}, 100);	
 		};
 		
         $(document).ready(function(){
@@ -204,11 +235,11 @@ app.directive('bxSlider', [function () {
                 console.log("ngRepeat has finished");
                 element.bxSlider(scope.$eval('{' + attrs.bxSlider + '}'));
 				var t = window.setInterval(function(){
-					if(scope.stillloading) {
+					if(!scope.stillloading) {
 						element.startAuto();
 						NProgress.done();
 					}
-				}, 100);
+				}, 500);
             });
         }
     }

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: nikhilkulkarni
+ * Date: 1/3/16
+ * Time: 1:56 PM
+ */
 require 'base.php';
 header("Content-Type: application/json");
 if (!empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["email"]) && !empty($_GET["password"])
@@ -9,7 +15,6 @@ if (!empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["e
     $password = $_GET['password'];
     $university = $_GET['university'];
     $major = $_GET['major'];
-
 
     $sql = "INSERT INTO User (first_name, last_name, email, password, university, major)
         VALUES (:first_name, :last_name, :email, :password, :university,

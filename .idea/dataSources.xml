@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2838374623">
+  <component name="DataSourceManagerImpl" format="xml" hash="2020078886">
     <data-source source="LOCAL" name="gopooldb" uuid="6c735167-a20a-4ef1-95a1-95bb5ab03880">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

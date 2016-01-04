@@ -32,37 +32,14 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 		$scope.stillloading = true;
 		// window.onload = function () { $scope.stillloading = false; } //no longer loading
 		
-		// function initMap() {
-		
-		// // Try HTML5 geolocation.
-		// if (navigator.geolocation) {
-		// 	navigator.geolocation.getCurrentPosition(function(position) {
-		// 	var pos = {
-		// 		lat: position.coords.latitude,
-		// 		lng: position.coords.longitude
-		// 	};
-		// 	console.log(pos);
-		// 	}, function() {
-		// 	handleLocationError(true, infoWindow, map.getCenter());
-		// 	});
-		// } else {
-		// 	// Browser doesn't support Geolocation
-		// 	handleLocationError(false, infoWindow, map.getCenter());
-		// }
-		// }
-		
-		// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		// infoWindow.setPosition(pos);
-		// infoWindow.setContent(browserHasGeolocation ?
-		// 						'Error: The Geolocation service failed.' :
-		// 						'Error: Your browser doesn\'t support geolocation.');
-		// }
-
 		var autocomplete;
 		function initialize(types) {
 			//atlanta - 33.7550, -84.3900
 						//NY - 40.7127, -74.0059
-			var pyrmont = new google.maps.LatLng(33.7550, -84.3900); //INPUT USER LOCATION HERE
+						
+			//39.1600397, -77.2943121
+			
+			var pyrmont = new google.maps.LatLng(39.1600397,-77.2943121); //INPUT USER LOCATION HERE
 			
 			autocomplete = new google.maps.places.Autocomplete(
 				/** @type {HTMLInputElement} */(document.getElementById('name')),
@@ -80,7 +57,7 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 			$("#map-canvas").hide();
 			var request = {
 				location: pyrmont,
-				radius: 500,
+				radius: 10000,
 				types: types
 			};
 			var requestdetails = {
@@ -155,9 +132,8 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 		
 
 		var t = window.setInterval(function(){
-			// alert("Check");
 			check();
-		}, 200);
+		}, 100);
 		
 			
 		function check() {
@@ -172,8 +148,8 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 						$scope.stillloading = false;
 						clearInterval(t);
 					}
-				}, 100);
-			}, 100);	
+				}, 50);
+			}, 50);	
 		};
 		
         $(document).ready(function(){

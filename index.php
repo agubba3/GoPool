@@ -199,8 +199,46 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
         </div>
     </div>
 </div>
-<script type="text/javascript">
+    <script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
 
-</script>
+    function initMap() {
+
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          console.log(pos);
+          $('#login').click(function() {
+            url = 'http://localhost/search.html?lat=' + pos.lat + '&lng=' + pos.lng;
+                      document.location.href = url;
+          })
+        }, function() {
+          handleLocationError(1);
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(2);
+      }
+    }
+
+    function handleLocationError(num) {
+      if(num === 1) {
+          alert("Could not locate you!");
+      } else {
+          alert("Your browser does not support Geolocation!");
+      }
+    }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcwmPkIk7GjzLJ-DcOsI9bjbKnULoqPEc&signed_in=true&callback=initMap"
+        async defer>
+    </script>
 </body>
 </html>

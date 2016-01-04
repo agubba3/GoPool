@@ -21,25 +21,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <!--     Google Places API -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-	
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcwmPkIk7GjzLJ-DcOsI9bjbKnULoqPEc&signed_in=true&callback=initMap"
-        async defer>
-    </script>
-
-
     <style type="text/css">
-        @font-face {
-            font-family: LeagueGothic;
-            src: url('fonts/league_gothic/league_gothic-webfont.eot');
-            src: url('fonts/league_gothic/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
-                 url('fonts/league_gothic/league_gothic-webfont.woff') format('woff'),
-                 url('fonts/league_gothic/league_gothic-webfont.ttf') format('truetype'),
-                 url('fonts/league_gothic/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
         /* enable absolute positioning */
         .inner-addon { 
             position: relative; 
@@ -167,21 +149,26 @@
 	      };
 	    console.log(pos);
 	    }, function() {
-	      handleLocationError(true, infoWindow, map.getCenter());
+	      handleLocationError(1);
 	    });
 	  } else {
 	    // Browser doesn't support Geolocation
-	    handleLocationError(false, infoWindow, map.getCenter());
+	    handleLocationError(2);
 	  }
 	}
 
-	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-	  infoWindow.setPosition(pos);
-	  infoWindow.setContent(browserHasGeolocation ?
-	                        'Error: The Geolocation service failed.' :
-	                        'Error: Your browser doesn\'t support geolocation.');
+	function handleLocationError(num) {
+	  if(num === 1) {
+		  alert("Could not locate you!");
+	  } else {
+		  alert("Your browser does not support Geolocation!");
+	  }
 	}
 
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcwmPkIk7GjzLJ-DcOsI9bjbKnULoqPEc&signed_in=true&callback=initMap"
+        async defer>
+    </script>
+
 </body>
 </html>

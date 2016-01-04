@@ -1,8 +1,0 @@
-agubba4
-Access Key ID:
-AKIAINSGNZ4JOEQIUFFQ
-Secret Access Key:
-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
-
-
-FOR API calls from EC2 instance

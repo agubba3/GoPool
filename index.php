@@ -92,7 +92,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         if ($st->rowCount()) {
             $rows = $st->fetchAll();
             $_SESSION["email"] = $email;
-            header('Location: search.html');
+            header('Location: search.php');
         } else {
             print "Invalid username and/or password";
         }
@@ -124,8 +124,6 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
     } else {
         print "Invalid parameter";
     }
-} else {
-    print "Internal error. Try Again.";
 }
 ?>
 <div class="container">

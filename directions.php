@@ -142,7 +142,8 @@
 <div id="drivers">
     <ul>
     <?php
-        $destination = $_SESSION["destination"];
+        require 'base.php';
+        $destination = $_GET["name"];
         $sql = "SELECT *
                 FROM Available_Rides JOIN User
                 WHERE destination = :destination and driver_email = User.email;";
@@ -150,7 +151,7 @@
         $st->execute(array(':destination' => $destination));
         $rides = $st->fetchAll();
         foreach ($rides as $ride) {
-            print "<li>" + $ride + "</li>";
+            print "<li>" . $ride["first_name"] . " " . $ride["last_name"] . "</li>";
         }
     ?>
     </ul>

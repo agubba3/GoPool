@@ -76,6 +76,7 @@ require 'base.php';
 </head>
 <body ng-app="validationApp">
 <?php
+
 if (isset($_POST["email"]) && isset($_POST["password"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -129,8 +130,6 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
             <input type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
             <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
         </div>
-
-
         <div class="inner-addon left-addon" id="pass">
             <i class="glyphicon glyphicon-lock"></i>
             <input type="password" class="form-control" placeholder = "Password" id="password" name="password"/>
@@ -140,7 +139,7 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
                 <button type="button" class="btn" data-toggle="modal" data-target = "#myModal" id="signup"><b>Don't have an account? Click here.</b></button>
             </div>
             <div>
-                <button type="submit" class="btn btn-success" id="login" ng-disabled="userForm.$invalid"><b>Login</b></button>
+                <button type="submit" class="btn btn-success" id="login" ><b>Login</b></button>
             </div>
         </div>
     </form>
@@ -219,7 +218,7 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
           console.log(pos);
           $('#login').click(function() {
             url = 'http://localhost/search.html?lat=' + pos.lat + '&lng=' + pos.lng;
-                      document.location.href = url;
+                      // document.location.href = url;
           })
         }, function() {
           handleLocationError(1);

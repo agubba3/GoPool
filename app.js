@@ -1,31 +1,5 @@
 var app = angular.module('plunker', []);
 
-app.controller('alternatesearch',['$scope', function($scope) {
-		//ng model was not working/updating	
-        $(document).ready(function() {
-          function map(val) {
-              // var b = document.getElementById('name').value;
-              val = val.replace(/ /g,'');
-              url = './directions.php?name=' + val;
-              document.location.href = url;
-          }
-          $("#find").click(
-          function() {
-              var b = document.getElementById('name').value;
-              map(b);
-          });
-           $('#name').keypress(function (e) {
-             var key = e.which;
-             if(key == 13)  // the enter key code
-              {
-                  var b = document.getElementById('name').value;
-                  map(b);
-              }
-          }); 
-      });
-		
-}]);
-
 		var QueryString = function () {
 			// This function is anonymous, is executed immediately and 
 			// the return value is assigned to QueryString!
@@ -48,6 +22,32 @@ app.controller('alternatesearch',['$scope', function($scope) {
 			} 
 				return query_string;
 		}();
+
+app.controller('alternatesearch',['$scope', function($scope) {
+		//ng model was not working/updating	
+        $(document).ready(function() {
+          function map(val) {
+              // var b = document.getElementById('name').value;
+              val = val.replace(/ /g,'');
+              url = './directions.php?name=' + val + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
+              document.location.href = url;
+          }
+          $("#find").click(
+          function() {
+              var b = document.getElementById('name').value;
+              map(b);
+          });
+           $('#name').keypress(function (e) {
+             var key = e.which;
+             if(key == 13)  // the enter key code
+              {
+                  var b = document.getElementById('name').value;
+                  map(b);
+              }
+          }); 
+      });
+		
+}]);
 
 app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeout) {
 		NProgress.start();

@@ -255,7 +255,6 @@ app.directive('bxSlider', [function () {
 .directive('clicked', function () {
     var linkFn = function (scope, element, attrs) {
         $(element).on('click',  function () {
-        	alert("Click");
         	console.log("Clicked");
 			var val = scope.place.vicinity;
             val = val.replace(/ /g,'');

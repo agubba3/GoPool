@@ -5,6 +5,7 @@ require 'base.php';
 <html>
 <head>
     <title>GoPool</title>
+	<link rel="shortcut icon" href="./Assets/Images/logoalt.png"> 
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,21 +24,14 @@ require 'base.php';
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <!--     Google Places API -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+	<!--Load Angular-->
+	<script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+	
+	<!--Form validation script-->
+	<script src="formvalidation.js"></script>
 
 
     <style type="text/css">
-        @font-face {
-            font-family: LeagueGothic;
-            src: url('fonts/league_gothic/league_gothic-webfont.eot');
-            src: url('fonts/league_gothic/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
-            url('fonts/league_gothic/league_gothic-webfont.woff') format('woff'),
-            url('fonts/league_gothic/league_gothic-webfont.ttf') format('truetype'),
-            url('fonts/league_gothic/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
         /* enable absolute positioning */
         .inner-addon {
             position: relative;
@@ -80,7 +74,7 @@ require 'base.php';
         }
     </style>
 </head>
-<body>
+<body ng-app="validationApp">
 <?php
 if (isset($_POST["email"]) && isset($_POST["password"])) {
     $email = $_POST["email"];
@@ -127,13 +121,16 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
     }
 }
 ?>
-<div class="container">
+<div class="container" ng-controller="mainController">
     <h1 id="title"><b>GoPool</b> <small>Go anywhere. Real cheap.</small></h1>
-    <form class="form-horizontal" method="post">
-        <div class="inner-addon left-addon" id="user">
+    <form name="userForm" class="form-horizontal" method="post" ng-submit="submitForm(userForm.$valid)" novalidate>
+        <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
             <i class="glyphicon glyphicon-user"></i>
-            <input type="text" class="form-control" placeholder = "Email" id="email" name="email"/>
+            <input type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
         </div>
+
+
         <div class="inner-addon left-addon" id="pass">
             <i class="glyphicon glyphicon-lock"></i>
             <input type="password" class="form-control" placeholder = "Password" id="password" name="password"/>
@@ -143,7 +140,7 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
                 <button type="button" class="btn" data-toggle="modal" data-target = "#myModal" id="signup"><b>Don't have an account? Click here.</b></button>
             </div>
             <div>
-                <button type="submit" class="btn btn-success" id="login"><b>Login</b></button>
+                <button type="submit" class="btn btn-success" id="login" ng-disabled="userForm.$invalid"><b>Login</b></button>
             </div>
         </div>
     </form>
@@ -155,31 +152,35 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Get started with SaltPool!</h4>
+                <h4 class="modal-title">Get started with GoPool!</h4>
             </div>
             <div class="modal-body">
                 <p>Enter your basic information and start riding.</p>
 
-                <form class="form-horizontal" method="post">
-                    <div class="inner-addon left-addon" id="user">
+                <form name="registerForm" class="form-horizontal" method="post">
+                    <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.first_name.$invalid && !registerForm.first_name.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" class="form-control" name="first_name" placeholder = "Enter your First Name"/>
+                        <input type="text" class="form-control" name="first_name" ng-model="user.first_name" placeholder = "Enter your First Name" required/>
+                        <p ng-show="registerForm.first_name.$invalid && !registerForm.first_name.$pristine" class="help-block">Your first name is required.</p>
                     </div>
-                    <div class="inner-addon left-addon" id="user">
+                    <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.last_name.$invalid && !registerForm.last_name.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" class="form-control" name="last_name" placeholder = "Enter your Last Name"/>
+                        <input type="text" class="form-control" name="last_name" ng-model="user.last_name" placeholder = "Enter your Last Name" required/>
+                        <p ng-show="registerForm.last_name.$invalid && !registerForm.last_name.$pristine" class="help-block">Your last name is required.</p>
                     </div>
-                    <div class="inner-addon left-addon" id="user">
+                    <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.r_email.$invalid && !registerForm.r_email.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="email" class="form-control" name="r_email" placeholder = "Enter your email"/>
+                        <input type="email" class="form-control" name="r_email" ng-model="user.r_email" placeholder = "Enter your email" required/>
+                        <p ng-show="registerForm.r_email.$invalid && !registerForm.r_email.$pristine" class="help-block">A valid email is required.</p>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control" name="r_password" placeholder = "Choose a password"/>
+                        <input type="password" class="form-control" name="r_password" ng-model="user.r_password" placeholder = "Choose a password"/>
                     </div>
-                    <div class="inner-addon left-addon" id="pass">
+                    <div class="inner-addon left-addon" id="pass" ng-class="{ 'has-error' : user.r_password != user.rc_password && !registerForm.rc_password.$pristine}">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control" placeholder = "Confirm password"/>
+                        <input type="password" class="form-control" name="rc_password" ng-model="user.rc_password" placeholder = "Confirm password"/>
+                        <p ng-show="user.r_password != user.rc_password && !registerForm.rc_password.$pristine" class="help-block">Passwords don't match.</p>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-education"></i>

@@ -81,12 +81,36 @@
         var directionsDisplay;
         var directionsService = new google.maps.DirectionsService();
 
+            var QueryString = function () {
+                // This function is anonymous, is executed immediately and 
+                // the return value is assigned to QueryString!
+                var query_string = {};
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                        // If first entry with this name
+                    if (typeof query_string[pair[0]] === "undefined") {
+                    query_string[pair[0]] = decodeURIComponent(pair[1]);
+                        // If second entry with this name
+                    } else if (typeof query_string[pair[0]] === "string") {
+                    var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+                    query_string[pair[0]] = arr;
+                        // If third or later entry with this name
+                    } else {
+                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                    }
+                } 
+                    return query_string;
+            }();
+
         function initialize() {
             // $("#map-canvas").hide();
             directionsDisplay = new google.maps.DirectionsRenderer();
+            console.log(QueryString.lat + QueryString.lng);
             var mapOptions = {
                 zoom: 3,
-                center: new google.maps.LatLng(41.850033, -87.6500523) //INPUT CURRENT USER LOCATION HERE
+                center: new google.maps.LatLng(QueryString.lat, QueryString.lng) //INPUT CURRENT USER LOCATION HERE
             };
             var map = new google.maps.Map(document.getElementById('map-canvas'),
                 mapOptions);
@@ -115,7 +139,7 @@
             if (address.substring(i,address.length) == ',UnitedStates') {
                 address = address.substring(0,i);
             };
-            var start = 'Atlanta, GA'
+            var start = new google.maps.LatLng(QueryString.lat, QueryString.lng)
             // var end = address
             var end = address
             var request = {

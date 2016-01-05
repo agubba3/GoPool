@@ -1,3 +1,7 @@
+<?php
+require 'base.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,32 +176,32 @@
 <div id="map-canvas"></div>
 <div id="directions-panel" class="panel"></div>
 <div id="drivers">
+    <?php
+    if (isset($_POST["driver"])) {
+        $ride = $_POST["result"];
+        $driver_email = $ride[0];
+        $rider_email = $_SESSION["email"];
+        $origin = $ride[2];
+        $destination = $ride[1];
+        date_default_timezone_set('America/New_York');
+        $request_time = date_default_timezone_get();
+
+        $sql = "INSERT INTO Current_Rides
+                            VALUES (:destination, :origin, :request_time, :rider_email, :driver_email, False);";
+        $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $st->execute(array(':destination' => $destination, ':origin' => $origin, ':request_time' => $request_time,
+            ':rider_email' => $rider_email, ':driver_email' => $driver_email));
+        if ($st->rowCount()) {
+            print 'Ride Successfully Requested';
+        } else {
+            print 'Error';
+        }
+    }
+    ?>
     <form method="post">
         <select name="driver" class="browser-default">
             <option disabled selected value="">Driver</option>
             <?php
-                require 'base.php';
-                if (isset($_POST["driver"])) {
-                    print 'something';
-                    $ride = $_POST["driver"];
-                    $driver_email = $ride["driver_email"];
-                    $rider_email = $ride["rider_email"];
-                    $origin = $ride["origin"];
-                    $destination = $ride["destination"];
-                    date_default_timezone_set('America/New York');
-                    $request_time = date_default_timezone_get();
-
-                    $sql = "INSERT INTO Current_Rides
-                            VALUES (:destination, :origin, :request_time, :rider_email, :driver_email, :False);";
-                    $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-                    $st->execute(array(':destination' => $destination, ':origin' => $origin, ':request_time' => $request_time,
-                                        ':rider_email' => $rider_email, ':driver_email' => $driver_email));
-                    if ($st->rowCount()) {
-                        print 'Ride Successfully Requested';
-                    } else {
-                        print 'Error';
-                    }
-                }
                 $destination = $_GET["name"];
                 $sql = "SELECT *
                         FROM Available_Rides JOIN User
@@ -206,8 +210,13 @@
                 $st->execute(array(':destination' => $destination));
                 $rides = $st->fetchAll();
                 foreach ($rides as $ride) {
-                    print "<option value=\"" . $ride . "\">" . $ride["first_name"] . " " . $ride["last_name"] . " - " .
+                    $postvalue = array($ride["driver_email"], $ride["destination"], $ride["origin"]);
+                    print "<option>" . $ride["first_name"] . " " . $ride["last_name"] . " - " .
                         $ride["destination"] . "</option>";
+                    foreach($postvalue as $value)
+                    {
+                        echo '<input type="hidden" name="result[]" value="'. $value. '">';
+                    }
                 }
             ?>
         </select>

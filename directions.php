@@ -56,8 +56,8 @@
         #drivers {
             float: left;
             margin-top: 10px;
-            border: 1px solid red;
-            background-color: red;
+            border: 1px lightslategray;
+            background-color: lightslategrey;
             margin-left: 50px;
         }
     </style>
@@ -172,20 +172,51 @@
 <div id="map-canvas"></div>
 <div id="directions-panel" class="panel"></div>
 <div id="drivers">
+    <form method="post">
+        <select name="driver" class="browser-default">
+            <option disabled selected value="">Driver</option>
+            <?php
+                require 'base.php';
+                if (isset($_POST["driver"])) {
+                    print 'something';
+                    $ride = $_POST["driver"];
+                    $driver_email = $ride["driver_email"];
+                    $rider_email = $ride["rider_email"];
+                    $origin = $ride["origin"];
+                    $destination = $ride["destination"];
+                    date_default_timezone_set('America/New York');
+                    $request_time = date_default_timezone_get();
+
+                    $sql = "INSERT INTO Current_Rides
+                            VALUES (:destination, :origin, :request_time, :rider_email, :driver_email, :False);";
+                    $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                    $st->execute(array(':destination' => $destination, ':origin' => $origin, ':request_time' => $request_time,
+                                        ':rider_email' => $rider_email, ':driver_email' => $driver_email));
+                    if ($st->rowCount()) {
+                        print 'Ride Successfully Requested';
+                    } else {
+                        print 'Error';
+                    }
+                }
+                $destination = $_GET["name"];
+                $sql = "SELECT *
+                        FROM Available_Rides JOIN User
+                        WHERE destination = :destination AND driver_email = User.email;";
+                $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $st->execute(array(':destination' => $destination));
+                $rides = $st->fetchAll();
+                foreach ($rides as $ride) {
+                    print "<option value=\"" . $ride . "\">" . $ride["first_name"] . " " . $ride["last_name"] . " - " .
+                        $ride["destination"] . "</option>";
+                }
+            ?>
+        </select>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="submit"><b>Request Ride</b></button>
+        </div>
+    </form>
     <ul>
-    <?php
-        require 'base.php';
-        $destination = $_GET["name"];
-        $sql = "SELECT *
-                FROM Available_Rides JOIN User
-                WHERE destination = :destination and driver_email = User.email;";
-        $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $st->execute(array(':destination' => $destination));
-        $rides = $st->fetchAll();
-        foreach ($rides as $ride) {
-            print "<li>" . $ride["first_name"] . " " . $ride["last_name"] . "</li>";
-        }
-    ?>
+
     </ul>
 </div>
 <script type="text/javascript">

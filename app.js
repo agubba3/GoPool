@@ -54,11 +54,15 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 		
 		$scope.stillloading = true;
 		// window.onload = function () { $scope.stillloading = false; } //no longer loading
-		
+		var mapmain = {}; 
 		var autocomplete;
 		function initialize(types) {
 			//atlanta - 33.7550, -84.3900
-						//NY - 40.7127, -74.0059		
+			//NY - 40.7127, -74.0059
+			if(QueryString.lat+'.'+QueryString.lng in mapmain) {
+				$scope.places = mapmain[QueryString.lat+'.'+QueryString.lng];
+				return mapmain[QueryString.lat+'.'+QueryString.lng];
+			}		
 			
 			var pyrmont = new google.maps.LatLng(QueryString.lat,QueryString.lng); //INPUT USER LOCATION HERE
 			
@@ -91,6 +95,7 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 	
 		function callback(results, status) {
 			console.log(results);
+			mapmain[QueryString.lat+'.'+QueryString.lng] = results;
 			$scope.$apply(function() {
 				var placess = [];
 				for (var i = 0; i < results.length; i++) {
@@ -111,7 +116,9 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 		var i = 0;
 		var map = {};
 		$scope.pic = function pic(place_id) {
-			
+			if(QueryString.lat+'.'+QueryString.lng in mapmain) {
+				return;
+			}
 			if(place_id in map) {
 				return;
 			}
@@ -257,6 +264,8 @@ app.directive('bxSlider', [function () {
 .directive('clicked', function () {
     var linkFn = function (scope, element, attrs) {
         $(element).on('click',  function () {
+        	alert("Click");
+        	console.log("Clicked");
 			var val = scope.place.vicinity;
             val = val.replace(/ /g,'');
             url = './directions.php?name=' + val + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;

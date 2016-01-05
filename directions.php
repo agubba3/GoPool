@@ -81,10 +81,17 @@
         var directionsDisplay;
         var directionsService = new google.maps.DirectionsService();
 
+        // qu = address.replace(/\b\#\w+/g, ''); 
+
             var QueryString = function () {
                 // This function is anonymous, is executed immediately and 
                 // the return value is assigned to QueryString!
                 var query_string = {};
+                var withouthashtags = (window.location.href);
+                withouthashtags = withouthashtags.replace(/\b\#\w+/g, ''); 
+                if(withouthashtags != window.location.href) {
+                    window.location.href = withouthashtags;
+                }
                 var query = window.location.search.substring(1);
                 var vars = query.split("&");
                 for (var i=0;i<vars.length;i++) {
@@ -139,6 +146,7 @@
             if (address.substring(i,address.length) == ',UnitedStates') {
                 address = address.substring(0,i);
             };
+            console.log(address);
             var start = new google.maps.LatLng(QueryString.lat, QueryString.lng)
             // var end = address
             var end = address
@@ -179,11 +187,6 @@
         }
     ?>
     </ul>
-<!--    <ul>-->
-<!--        List of Drivers-->
-<!--        <li>Barack</li>-->
-<!--        <li>Nig</li>-->
-<!--    </ul>-->
 </div>
 <script type="text/javascript">
     $("#test").hide();

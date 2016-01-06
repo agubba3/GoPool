@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '79A2D5CDB5A5A50998D4F294'
+               BlueprintIdentifier = '4C1796C3CB25ABAA99BA3CB9'
                BlueprintName = 'Pods-GoPool'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_GoPool.framework'>

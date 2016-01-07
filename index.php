@@ -1,6 +1,3 @@
-<?php
-require 'base.php';
-?>
 <!doctype html>
 <html>
 <head>
@@ -75,56 +72,10 @@ require 'base.php';
     </style>
 </head>
 <body ng-app="validationApp">
-<?php
 
-if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    try {
-        $sql = "SELECT * FROM User WHERE email= :email AND password= :password";
-        $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $st->execute(array(':email' => $email, ':password' => $password));
-        if ($st->rowCount()) {
-            $rows = $st->fetchAll();
-            $_SESSION["email"] = $email;
-            header('Location: search.php');
-        } else {
-            print "Invalid username and/or password";
-        }
-    } catch (PDOException $e) {
-        print $e;
-    }
-}
-else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST["university"]) && isset($_POST["major"])
-    && isset($_POST["first_name"]) && isset($_POST["last_name"])) {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['r_email'];
-    $password = $_POST['r_password'];
-    $university = $_POST['university'];
-    $major = $_POST['major'];
-
-    $sql = "INSERT INTO User (first_name, last_name, email, password, university, major)
-        VALUES (:first_name, :last_name, :email, :password, :university,
-        :major);";
-    $st = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-    try {
-        $st->execute(array(':first_name' => $first_name, ':last_name' => $last_name, ':email' => $email, ':password' => $password,
-            ':university' => $university, ':major' => $major));
-    } catch (PDOException $e) {
-        print $e;
-    }
-    if ($st->rowCount()) {
-        header('Location: index.php');
-    } else {
-        print "Invalid parameter";
-    }
-}
-?>
 <div class="container" ng-controller="mainController">
     <h1 id="title"><b>GoPool</b> <small>Go anywhere. Real cheap.</small></h1>
-    <form name="userForm" class="form-horizontal" method="post" ng-submit="submitForm(userForm.$valid)" novalidate>
+    <form name="userForm" action="formlogin.php" class="form-horizontal" method="POST"  novalidate>
         <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
             <i class="glyphicon glyphicon-user"></i>
             <input type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
@@ -134,12 +85,14 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
             <i class="glyphicon glyphicon-lock"></i>
             <input type="password" class="form-control" placeholder = "Password" id="password" name="password"/>
         </div>
+        <input ng-hide="true" name="lat" id="mylat"/>
+        <input ng-hide="true" name="lng" id="mylng"/>
         <div class="form-group center inline">
             <div>
                 <button type="button" class="btn" data-toggle="modal" data-target = "#myModal" id="signup"><b>Don't have an account? Click here.</b></button>
             </div>
             <div>
-                <button type="submit" class="btn btn-success" id="login" ><b>Login</b></button>
+                <button type="submit" name="submit" class="btn btn-success" id="login" ><b>Login</b></button>
             </div>
         </div>
     </form>
@@ -156,7 +109,7 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
             <div class="modal-body">
                 <p>Enter your basic information and start riding.</p>
 
-                <form name="registerForm" class="form-horizontal" method="post">
+                <form name="registerForm"  action="formlogin.php" class="form-horizontal" method="post">
                     <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.first_name.$invalid && !registerForm.first_name.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
                         <input type="text" class="form-control" name="first_name" ng-model="user.first_name" placeholder = "Enter your First Name" required/>
@@ -216,10 +169,10 @@ else if (isset($_POST["r_email"]) && isset($_POST["r_password"]) && isset($_POST
             lng: position.coords.longitude
           };
           console.log(pos);
-          $('#login').click(function() {
-            url = 'http://localhost/search.html?lat=' + pos.lat + '&lng=' + pos.lng;
-                      // document.location.href = url;
-          })
+            var elemlat = document.getElementById("mylat");
+            elemlat.value = pos.lat;
+            var elemlng = document.getElementById("mylng");
+            elemlng.value = pos.lng;
         }, function() {
           handleLocationError(1);
         });

@@ -162,7 +162,6 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 					var currenti = i;
 					console.log("Old i: " + oldi);
 					console.log("New i: " + currenti);
-					// alert("Here");
 					if(oldi + 5 < currenti || oldi - 5 > currenti) {
 						$scope.stillloading = false;
 						clearInterval(t);
@@ -255,7 +254,6 @@ app.directive('bxSlider', [function () {
 .directive('clicked', function () {
     var linkFn = function (scope, element, attrs) {
         $(element).on('click',  function () {
-        	console.log("Clicked");
 			var val = scope.place.vicinity;
             val = val.replace(/ /g,'');
             url = './directions.php?name=' + val + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;

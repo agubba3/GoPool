@@ -28,8 +28,8 @@ app.controller('alternatesearch',['$scope', function($scope) {
         $(document).ready(function() {
           function map(val) {
               // var b = document.getElementById('name').value;
-              val = val.replace(/ /g,'');
-              url = './directions.php?name=' + val + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
+              //val = val.replace(/ /g,'');
+              url = './directions.php?name=' + val.replace(" ", "%20") + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
               document.location.href = url;
           }
           $("#find").click(
@@ -255,8 +255,7 @@ app.directive('bxSlider', [function () {
     var linkFn = function (scope, element, attrs) {
         $(element).on('click',  function () {
 			var val = scope.place.vicinity;
-            val = val.replace(/ /g,'');
-            url = './directions.php?name=' + val + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
+            url = './directions.php?name=' + val.replace(" ", "%20") + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
             if (scope.place.opening_hours !== undefined && !scope.place.opening_hours.open_now) {
              	$(element).attr("data-target", "#myModal");
                 $(element).attr("data-toggle", "modal");

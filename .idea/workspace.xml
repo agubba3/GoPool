@@ -2,10 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c91c84d-1d4d-413b-b880-985a03a84e81" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base.php" afterPath="$PROJECT_DIR$/base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/directions.php" afterPath="$PROJECT_DIR$/directions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcodeproj/project.pbxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcodeproj/project.xcworkspace/xcuserdata/nikhilkulkarni.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcodeproj/xcuserdata/nikhilkulkarni.xcuserdatad/xcschemes/GoPool.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcodeproj/xcuserdata/nikhilkulkarni.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcworkspace/contents.xcworkspacedata" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcworkspace/xcuserdata/nikhilkulkarni.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool.xcworkspace/xcuserdata/nikhilkulkarni.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/AppDelegate.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Assets.xcassets/AppIcon.appiconset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Assets.xcassets/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Assets.xcassets/logo.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Assets.xcassets/logo.imageset/logo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Base.lproj/LaunchScreen.storyboard" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Base.lproj/Main.storyboard" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/SignInRiderViewController.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/Util.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/GoPool/ViewController.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Podfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Podfile.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Local Podspecs/SwiftyJSON.podspec.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Manifest.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Pods.xcodeproj/project.pbxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Pods.xcodeproj/xcuserdata/nikhilkulkarni.xcuserdatad/xcschemes/Pods-GoPool.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Pods.xcodeproj/xcuserdata/nikhilkulkarni.xcuserdatad/xcschemes/SwiftyJSON.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Pods.xcodeproj/xcuserdata/nikhilkulkarni.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/SwiftyJSON/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/SwiftyJSON/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/SwiftyJSON/Source/SwiftyJSON.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-acknowledgements.markdown" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-acknowledgements.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-dummy.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-frameworks.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-resources.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool-umbrella.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool.debug.xcconfig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/Pods-GoPool/Pods-GoPool.release.xcconfig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-dummy.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/GoPool/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.xcconfig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iOS/Simulator Screen Shot Jan 5, 2016, 10.49.16 PM.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="GoPool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,31 +91,9 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
+            <state vertical-scroll-proportion="0.0">
               <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-              <folding>
-                <marker date="1452019198000" expanded="true" signature="2977:3039" placeholder="SELECT * FRO..User..." />
-                <marker date="1452019198000" expanded="true" signature="3912:4077" placeholder="INSERT INTO User..." />
-                <marker date="1452019198000" expanded="true" signature="4567:5332" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="4694:5332" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="4749:4917" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="4972:5153" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5200:5332" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5218:5248" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5218:5332" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5413:5527" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5628:8499" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5659:8492" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5725:8481" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5764:5945" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="5982:8466" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="6114:8447" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="6741:6948" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="7015:7229" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="7296:7491" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="7558:7774" placeholder="..." />
-                <marker date="1452019198000" expanded="true" signature="9824:9832" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,7 +101,7 @@
       <file leaf-file-name="findDestination.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PHP/findDestination.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.625">
+            <state vertical-scroll-proportion="0.0">
               <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding>
                 <marker date="1451847409000" expanded="true" signature="274:370" placeholder="SELECT desti..Requested_Rides..." />
@@ -92,7 +114,7 @@
       <file leaf-file-name="base.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625">
+            <state vertical-scroll-proportion="0.0">
               <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
               <folding />
             </state>
@@ -102,28 +124,32 @@
       <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.75">
+            <state vertical-scroll-proportion="0.0">
               <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/directions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.333333">
+              <caret line="217" column="56" selection-start-line="217" selection-start-column="56" selection-end-line="217" selection-end-column="56" />
               <folding>
-                <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1452021149000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+                <marker date="1452021149000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directions.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/directions.php">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6052632">
-              <caret line="217" column="56" selection-start-line="217" selection-start-column="56" selection-end-line="217" selection-end-column="56" />
-              <folding>
-                <marker date="1452021056000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
-                <marker date="1452021056000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
-                <marker date="1452021056000" expanded="true" signature="8899:9013" placeholder="..." />
-                <marker date="1452021056000" expanded="true" signature="9034:9045" placeholder="..." />
-                <marker date="1452021056000" expanded="true" signature="9084:9181" placeholder="..." />
-                <marker date="1452021056000" expanded="true" signature="9142:9170" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.7169014">
+              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,7 +157,7 @@
       <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PHP/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875">
+            <state vertical-scroll-proportion="0.0">
               <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <marker date="1451847409000" expanded="true" signature="559:724" placeholder="INSERT INTO User..." />
@@ -155,12 +181,12 @@
         <option value="$PROJECT_DIR$/PHP/startTrip.php" />
         <option value="$PROJECT_DIR$/PHP/acceptRequest.php" />
         <option value="$PROJECT_DIR$/directions.html" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/search.php" />
         <option value="$PROJECT_DIR$/PHP/base.php" />
         <option value="$PROJECT_DIR$/base.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/directions.php" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -176,7 +202,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="805" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -203,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,28 +271,9 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="GoPool">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="GoPool">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="PHP">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,27 +358,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="805" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="807" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -389,6 +397,62 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/findDestination.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <marker date="1451847409000" expanded="true" signature="274:370" placeholder="SELECT desti..Requested_Rides..." />
+            <marker date="1451847409000" expanded="true" signature="274:400" placeholder="SELECT * FRO..Available_Rides..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452021149000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+            <marker date="1452021149000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <marker date="1451847409000" expanded="true" signature="559:724" placeholder="INSERT INTO User..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PHP/findDestination.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -464,19 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iOS/GoPool/GoPool/ViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/directions.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.69298244">
           <caret line="147" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -502,21 +557,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.0">
           <caret line="72" column="71" selection-start-line="72" selection-start-column="71" selection-end-line="72" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.720339">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PHP/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
+        <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="27" selection-end-column="5" />
           <folding>
             <marker date="1451847409000" expanded="true" signature="559:724" placeholder="INSERT INTO User..." />
@@ -534,7 +580,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PHP/findDestination.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625">
+        <state vertical-scroll-proportion="0.0">
           <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
           <folding>
             <marker date="1451847409000" expanded="true" signature="274:370" placeholder="SELECT desti..Requested_Rides..." />
@@ -545,17 +591,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.75">
+        <state vertical-scroll-proportion="0.0">
           <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
+        <state vertical-scroll-proportion="0.0">
           <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
           <folding />
         </state>
@@ -563,46 +607,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
+        <state vertical-scroll-proportion="0.0">
           <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-          <folding>
-            <marker date="1452019198000" expanded="true" signature="2977:3039" placeholder="SELECT * FRO..User..." />
-            <marker date="1452019198000" expanded="true" signature="3912:4077" placeholder="INSERT INTO User..." />
-            <marker date="1452019198000" expanded="true" signature="4567:5332" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="4694:5332" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="4749:4917" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="4972:5153" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5200:5332" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5218:5248" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5218:5332" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5413:5527" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5628:8499" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5659:8492" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5725:8481" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5764:5945" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="5982:8466" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="6114:8447" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="6741:6948" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="7015:7229" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="7296:7491" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="7558:7774" placeholder="..." />
-            <marker date="1452019198000" expanded="true" signature="9824:9832" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/directions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6052632">
+        <state vertical-scroll-proportion="-12.333333">
           <caret line="217" column="56" selection-start-line="217" selection-start-column="56" selection-end-line="217" selection-end-column="56" />
           <folding>
-            <marker date="1452021056000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
-            <marker date="1452021056000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
-            <marker date="1452021056000" expanded="true" signature="8899:9013" placeholder="..." />
-            <marker date="1452021056000" expanded="true" signature="9034:9045" placeholder="..." />
-            <marker date="1452021056000" expanded="true" signature="9084:9181" placeholder="..." />
-            <marker date="1452021056000" expanded="true" signature="9142:9170" placeholder="{...}" />
+            <marker date="1452021149000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+            <marker date="1452021149000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7169014">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

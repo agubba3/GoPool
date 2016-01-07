@@ -70,9 +70,6 @@
             <button ng-click="calladdress()" class="btn " type="submit" id="find"><i class="glyphicon glyphicon-search" id="glpy"></i></button>
         </div>
         <?php
-        if (empty($_SESSION["email"])) {
-            header('Location: index.php');
-        }
             if (isset($_GET["name"])) {
                 $_SESSION["destination"] = $_GET["name"];
             }

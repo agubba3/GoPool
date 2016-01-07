@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c91c84d-1d4d-413b-b880-985a03a84e81" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/directions.php" afterPath="$PROJECT_DIR$/directions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search.php" afterPath="$PROJECT_DIR$/search.php" />
     </list>
@@ -93,8 +91,8 @@
       <file leaf-file-name="search.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.590379">
-              <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.32215744">
+              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -103,7 +101,7 @@
       <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.416667">
+            <state vertical-scroll-proportion="-10.458333">
               <caret line="30" column="175" selection-start-line="30" selection-start-column="173" selection-end-line="30" selection-end-column="175" />
               <folding />
             </state>
@@ -113,11 +111,11 @@
       <file leaf-file-name="directions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
-                <marker date="1452141516000" expanded="true" signature="7249:7384" placeholder="INSERT INTO Current_Rides..." />
-                <marker date="1452141516000" expanded="true" signature="8043:8193" placeholder="SELECT * FRO..Available_Rides..." />
+                <marker date="1452141705000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+                <marker date="1452141705000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
               </folding>
             </state>
           </provider>
@@ -420,8 +418,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1452141516000" expanded="true" signature="7249:7384" placeholder="INSERT INTO Current_Rides..." />
-            <marker date="1452141516000" expanded="true" signature="8043:8193" placeholder="SELECT * FRO..Available_Rides..." />
+            <marker date="1452141705000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+            <marker date="1452141705000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
           </folding>
         </state>
       </provider>
@@ -616,29 +614,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/directions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <marker date="1452141705000" expanded="true" signature="7179:7314" placeholder="INSERT INTO Current_Rides..." />
+            <marker date="1452141705000" expanded="true" signature="7973:8123" placeholder="SELECT * FRO..Available_Rides..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.416667">
+        <state vertical-scroll-proportion="-10.458333">
           <caret line="30" column="175" selection-start-line="30" selection-start-column="173" selection-end-line="30" selection-end-column="175" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/directions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding>
-            <marker date="1452141516000" expanded="true" signature="7249:7384" placeholder="INSERT INTO Current_Rides..." />
-            <marker date="1452141516000" expanded="true" signature="8043:8193" placeholder="SELECT * FRO..Available_Rides..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.590379">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.32215744">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
           <folding />
         </state>
       </provider>

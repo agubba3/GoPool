@@ -1,5 +1,8 @@
 <?php
 require 'base.php';
+if (empty($_SESSION["email"])) {
+    header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>

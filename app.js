@@ -28,7 +28,6 @@ app.controller('alternatesearch',['$scope', function($scope) {
         $(document).ready(function() {
           function map(val) {
               // var b = document.getElementById('name').value;
-              //val = val.replace(/ /g,'');
               url = './directions.php?name=' + val.replace(" ", "%20") + '&lat=' + QueryString.lat + '&lng=' + QueryString.lng;
               document.location.href = url;
           }

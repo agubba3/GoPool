@@ -84,6 +84,7 @@ extension RequestRideViewController: GMSAutocompleteResultsViewControllerDelegat
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
             let json = JSON(data: data!)
+            print(json)
             if (json["status"] == 400) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.activityIndicator.stopAnimating()
@@ -113,7 +114,11 @@ extension RequestRideViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if (rides == nil) {
+            return 0
+        } else {
+            return self.rides["rides"].count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -124,6 +129,13 @@ extension RequestRideViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.performSegueWithIdentifier("showRideDetail", sender: indexPath.row)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showRideDetail" {
+            let dt = segue.destinationViewController as! RideDetailViewController
+            dt.ride = self.rides["rides"][sender as! Int]
+        }
     }
 }

@@ -1,10 +1,9 @@
 <?php
 require 'base.php';
-if (empty($_SESSION["email"])) {
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] == false) {
     header('Location: index.php');
-}
+} 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,6 +152,8 @@ if (empty($_SESSION["email"])) {
             if (address.substring(i,address.length) == ',UnitedStates') {
                 address = address.substring(0,i);
             };
+            address = address.replace(/ /g,'');
+            address = address.replace(/%20/g,'');
             console.log(address);
             var start = new google.maps.LatLng(QueryString.lat, QueryString.lng)
             // var end = address

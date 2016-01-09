@@ -12,8 +12,6 @@ class RideDetailCellTableViewCell: UITableViewCell {
     
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var majorLabel: UILabel!
-    @IBOutlet var originLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

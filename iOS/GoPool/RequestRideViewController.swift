@@ -35,6 +35,11 @@ class RequestRideViewController: UIViewController {
         searchController?.searchBar.sizeToFit()
         self.navigationItem.titleView = searchController?.searchBar
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 62/255.0, green: 70/255.0, blue: 75/255.0, alpha: 1.0)
+//        searchController?.searchBar.backgroundColor = UIColor(red: 62/255.0, green: 70/255.0, blue: 75/255.0, alpha: 1.0)
+        searchController?.searchBar.barTintColor = UIColor(red: 62/255.0, green: 70/255.0, blue: 75/255.0, alpha: 1.0)
+        searchController?.searchBar.tintColor = UIColor.whiteColor()
+        
         self.definesPresentationContext = true
         
         searchController?.hidesNavigationBarDuringPresentation = false
@@ -84,7 +89,6 @@ extension RequestRideViewController: GMSAutocompleteResultsViewControllerDelegat
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
             let json = JSON(data: data!)
-            print(json)
             if (json["status"] == 400) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.activityIndicator.stopAnimating()
@@ -123,12 +127,14 @@ extension RequestRideViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")
-        let text = self.rides["rides"][indexPath.row]["driver_email"]
-        cell!.textLabel?.text = text.stringValue
+        var text = self.rides["rides"][indexPath.row]["first_name"].stringValue
+        text += " " + self.rides["rides"][indexPath.row]["last_name"].stringValue
+        cell?.textLabel?.text = text
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("showRideDetail", sender: indexPath.row)
     }
     

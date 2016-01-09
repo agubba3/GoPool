@@ -11,6 +11,7 @@
     <title>Weather</title>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -26,7 +27,6 @@
 	
 	<!--Form validation script-->
 	<script src="formvalidation.js"></script>
-
 
     <style type="text/css">
         body {
@@ -155,10 +155,10 @@
 <div class="container" ng-controller="mainController">
 <div id="page-wrap" style="display: none;">
     <h1 id="title"><b>LOG IN TO START RIDING...</b></h1>
-    <form name="userForm" action="formlogin.php" class="form-horizontal" method="POST"  novalidate>
+    <form id="mainform" name="userForm" action="formlogin.php"  class="form-horizontal" method="POST"  novalidate>
         <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
             <i class="glyphicon glyphicon-user"></i>
-            <input type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
+            <input  type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
             <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block inv">ENTER A VALID EMAIL.</p>
         </div>
         <div class="inner-addon left-addon" id="pass">
@@ -245,16 +245,44 @@
     </div>
 </div>
     <script>
-
+    var QueryString = function () {
+      // This function is anonymous, is executed immediately and 
+      // the return value is assigned to QueryString!
+      var query_string = {};
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+            // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+          query_string[pair[0]] = decodeURIComponent(pair[1]);
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+          var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+          query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+          query_string[pair[0]].push(decodeURIComponent(pair[1]));
+        }
+      } 
+        return query_string;
+    }();
     $(document).ready(function() {
-        $('#page-wrap').delay(0).fadeIn(500);
+        if(QueryString.invalid == 'f') {
+            $('#page-wrap').delay(0).fadeIn(0);
+            setTimeout(function(){ $( "#mainform" ).effect( "shake" ); }, 100);
+        } else {
+            $('#page-wrap').delay(0).fadeIn(500);
+        }
     });
+    
+    
     $("#alertcred").animate({
         opacity: "0"
-    }, 500 );
+    }, 100 );
     $("#alertcred").animate({
         opacity: "0.6"
-    }, 500 );
+    }, 100 );
 
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service

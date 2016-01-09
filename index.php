@@ -29,12 +29,41 @@
 
 
     <style type="text/css">
+        body {
+            background-color: #101010 ;
+        }
+
         /* enable absolute positioning */
         .inner-addon {
             position: relative;
         }
-        body {
-
+        #email {
+            border-radius: 0px;
+            background-color: #404040;
+            border: none;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+            line-height: 30px;
+        }
+        #password {
+            border-radius: 0px;
+            background-color: #404040;
+            border: none;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+        #email, textarea {
+            color:white;
+            padding-top: 9px;
+        }
+        #password, textarea {
+            color:white;
+            padding-top: 9px;
+        }
+        .nobord {
+            border-radius: 0px;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+        button {
+            border-radius: 0px;
         }
         /* style icon */
         .inner-addon .glyphicon {
@@ -42,6 +71,7 @@
             padding: 15px;
             padding-right: 25px;
             pointer-events: none;
+            color: #B0B0B0 ;
         }
         /* align icon */
         .left-addon .glyphicon  { left:  2px;}
@@ -55,10 +85,24 @@
         #signup {
             float: left;
             margin-left: 1.7%;
+            border-radius: 0px;
+            background-color: #B0B0B0;
+                  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+                  font-weight: none;
+        }
+        #signup:hover{
+            background-color: gray;
         }
         #login {
             float: right;
             margin-right: 1.7%;
+            border-radius: 0px;
+            background-color: #0099CC;
+            color: white;
+                  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+        #login:hover {
+            background-color: #00BFFE;
         }
         #form {
             margin-top: 300px;
@@ -67,19 +111,55 @@
             margin-left: 5px;
         }
         #title {
-            font-family: LeagueGothic;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+            color: #B0B0B0;
+            margin-top: 100px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0099CC;
+        }
+        .modal-content  {
+            -webkit-border-radius: 0px !important;
+            -moz-border-radius: 0px !important;
+            border-radius: 0px !important; 
+        }
+        .majordrop {
+            height: 30px;
+            margin-left: 5px;
+        }
+        #submit {
+            background-color: #0099CC;
+            color: white;
+        }
+        #submit:hover{
+            background-color:#00BFFE; 
+        }
+        .inv {
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+        .customalert {
+            border-radius: 0px;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+            opacity: 0;
+            background-color: #F53D3D;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+        .bold {
+            font-weight: bold;
         }
     </style>
 </head>
 <body ng-app="validationApp">
 
 <div class="container" ng-controller="mainController">
-    <h1 id="title"><b>GoPool</b> <small>Go anywhere. Real cheap.</small></h1>
+<div id="page-wrap" style="display: none;">
+    <h1 id="title"><b>LOG IN TO START RIDING...</b></h1>
     <form name="userForm" action="formlogin.php" class="form-horizontal" method="POST"  novalidate>
         <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
             <i class="glyphicon glyphicon-user"></i>
             <input type="email" class="form-control" placeholder = "Email" id="email" name="email" ng-model="user.email"/>
-            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block inv">ENTER A VALID EMAIL.</p>
         </div>
         <div class="inner-addon left-addon" id="pass">
             <i class="glyphicon glyphicon-lock"></i>
@@ -89,23 +169,24 @@
         <input ng-hide="true" name="lng" id="mylng"/>
         <div class="form-group center inline">
             <div>
-                <button type="button" class="btn" data-toggle="modal" data-target = "#myModal" id="signup"><b>Don't have an account? Click here.</b></button>
+                <button type="button" class="btn" data-toggle="modal" data-target = "#myModal" id="signup"><b>DON'T HAVE AN ACCOUNT? SIGN UP.</b></button>
             </div>
             <div>
-                <button type="submit" name="submit" class="btn btn-success" id="login" ><b>Login</b></button>
+                <button type="submit" name="submit" class="btn" id="login" ><b>LOGIN</b></button>
             </div>
         </div>
     </form>
     <?php 
         if(isset($_GET['invalid']) && $_GET['invalid'] == 'f') {
-            echo '<div class="alert alert-danger alert-dismissable" role="alert">
+            echo '<div class="alert alert-dismissable customalert" role="alert" id="alertcred">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
               <span class="sr-only">Error:</span>
-              Invalid username and/or password.
+              INVALID USERNAME AND/OR PASSWORD.
             </div>';
         }
     ?>
+</div>
 </div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -114,41 +195,41 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Get started with GoPool!</h4>
+                <h4 class="modal-title nobord">GET STARTED WITH <span class="bold">GOPOOL</span>!</h4>
             </div>
             <div class="modal-body">
-                <p>Enter your basic information and start riding.</p>
+                <p class="nobord">Enter your basic information and start riding.</p>
 
                 <form name="registerForm"  action="formlogin.php" class="form-horizontal" method="post">
                     <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.first_name.$invalid && !registerForm.first_name.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" class="form-control" name="first_name" ng-model="user.first_name" placeholder = "Enter your First Name" required/>
+                        <input type="text" class="form-control nobord" name="first_name" ng-model="user.first_name" placeholder = "Enter your First Name" required/>
                         <p ng-show="registerForm.first_name.$invalid && !registerForm.first_name.$pristine" class="help-block">Your first name is required.</p>
                     </div>
                     <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.last_name.$invalid && !registerForm.last_name.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" class="form-control" name="last_name" ng-model="user.last_name" placeholder = "Enter your Last Name" required/>
+                        <input type="text" class="form-control nobord" name="last_name" ng-model="user.last_name" placeholder = "Enter your Last Name" required/>
                         <p ng-show="registerForm.last_name.$invalid && !registerForm.last_name.$pristine" class="help-block">Your last name is required.</p>
                     </div>
                     <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : registerForm.r_email.$invalid && !registerForm.r_email.$pristine }">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="email" class="form-control" name="r_email" ng-model="user.r_email" placeholder = "Enter your email" required/>
+                        <input type="email" class="form-control nobord" name="r_email" ng-model="user.r_email" placeholder = "Enter your email" required/>
                         <p ng-show="registerForm.r_email.$invalid && !registerForm.r_email.$pristine" class="help-block">A valid email is required.</p>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control" name="r_password" ng-model="user.r_password" placeholder = "Choose a password"/>
+                        <input type="password" class="form-control nobord" name="r_password" ng-model="user.r_password" placeholder = "Choose a password"/>
                     </div>
                     <div class="inner-addon left-addon" id="pass" ng-class="{ 'has-error' : user.r_password != user.rc_password && !registerForm.rc_password.$pristine}">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control" name="rc_password" ng-model="user.rc_password" placeholder = "Confirm password"/>
+                        <input type="password" class="form-control nobord" name="rc_password" ng-model="user.rc_password" placeholder = "Confirm password"/>
                         <p ng-show="user.r_password != user.rc_password && !registerForm.rc_password.$pristine" class="help-block">Passwords don't match.</p>
                     </div>
                     <div class="inner-addon left-addon" id="pass">
                         <i class="glyphicon glyphicon-education"></i>
-                        <input type="text" class="form-control" name="university" placeholder = "College/University"/>
+                        <input type="text" class="form-control nobord" name="university" placeholder = "College/University"/>
                     </div>
-                    <select name="major" class="browser-default">
+                    <select name="major" class="browser-default nobord majordrop">
                         <option disabled selected value="">Major</option>
                         <option value="Engineering">Engineering</option>
                         <option value="Liberal Arts">Liberal Arts</option>
@@ -156,7 +237,7 @@
                         <option value="Sciences">Sciences</option>
                     </select>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" id="submit"><b>Register</b></button>
+                        <button type="submit" class="btn nobord" id="submit"><b>REGISTER</b></button>
                     </div>
                 </form>
             </div>
@@ -164,6 +245,17 @@
     </div>
 </div>
     <script>
+
+    $(document).ready(function() {
+        $('#page-wrap').delay(0).fadeIn(500);
+    });
+    $("#alertcred").animate({
+        opacity: "0"
+    }, 500 );
+    $("#alertcred").animate({
+        opacity: "0.6"
+    }, 500 );
+
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to

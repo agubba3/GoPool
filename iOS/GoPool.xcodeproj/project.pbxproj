@@ -11,6 +11,7 @@
 		116C2DF11C3ED5F9001C6E8E /* RideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C2DF01C3ED5F9001C6E8E /* RideDetailViewController.swift */; };
 		116C2DF41C3ED9C2001C6E8E /* RideDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116C2DF31C3ED9C2001C6E8E /* RideDetailCell.xib */; };
 		116C2DF61C3ED9D9001C6E8E /* RideDetailCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C2DF51C3ED9D9001C6E8E /* RideDetailCellTableViewCell.swift */; };
+		116C2DF81C40C316001C6E8E /* CreateRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C2DF71C40C316001C6E8E /* CreateRideViewController.swift */; };
 		11EAA21B1C39D88900EE14F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAA21A1C39D88900EE14F8 /* AppDelegate.swift */; };
 		11EAA21D1C39D88900EE14F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAA21C1C39D88900EE14F8 /* ViewController.swift */; };
 		11EAA2201C39D88900EE14F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EAA21E1C39D88900EE14F8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		116C2DF01C3ED5F9001C6E8E /* RideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailViewController.swift; sourceTree = "<group>"; };
 		116C2DF31C3ED9C2001C6E8E /* RideDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RideDetailCell.xib; sourceTree = "<group>"; };
 		116C2DF51C3ED9D9001C6E8E /* RideDetailCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailCellTableViewCell.swift; sourceTree = "<group>"; };
+		116C2DF71C40C316001C6E8E /* CreateRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRideViewController.swift; sourceTree = "<group>"; };
 		11EAA2171C39D88900EE14F8 /* GoPool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EAA21A1C39D88900EE14F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11EAA21C1C39D88900EE14F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				116C2DF21C3ED997001C6E8E /* Nibs */,
 				11EAA21A1C39D88900EE14F8 /* AppDelegate.swift */,
+				116C2DF71C40C316001C6E8E /* CreateRideViewController.swift */,
 				116C2DEE1C3D9EC2001C6E8E /* RequestRideViewController.swift */,
 				116C2DF01C3ED5F9001C6E8E /* RideDetailViewController.swift */,
 				11EAA22E1C3CBACA00EE14F8 /* SignInRiderViewController.swift */,
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116C2DF81C40C316001C6E8E /* CreateRideViewController.swift in Sources */,
 				11EAA21D1C39D88900EE14F8 /* ViewController.swift in Sources */,
 				116C2DF11C3ED5F9001C6E8E /* RideDetailViewController.swift in Sources */,
 				11EAA22D1C3CACF800EE14F8 /* Util.swift in Sources */,

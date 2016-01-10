@@ -162,7 +162,7 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 					var currenti = i;
 					console.log("Old i: " + oldi);
 					console.log("New i: " + currenti);
-					if(Math.abs(oldi - currenti) < 100 && oldi != 0 && currenti != 0) {
+					if(Math.abs(oldi - currenti) < 5 && oldi != 0 && currenti != 0) {
 						$scope.stillloading = false;
 						console.log("LOAD SHOULD BE FALSE: " + $scope.stillloading);
 						clearInterval(t);
@@ -234,7 +234,7 @@ app.directive('bxSlider', [function () {
 						element.startAuto();
 						NProgress.done();
 					}
-				}, 500);
+				}, 300);
             });
         }
     }

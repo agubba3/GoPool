@@ -113,7 +113,7 @@
         #title {
             font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
             color: #B0B0B0;
-            margin-top: 100px;
+            margin-top: 120px;
             padding-bottom: 10px;
             border-bottom: 1px solid #0099CC;
         }
@@ -148,12 +148,20 @@
         .bold {
             font-weight: bold;
         }
+        #impala {
+            float: right;
+            position: relative;
+            margin-top: -53px;
+                width: 7%;
+    height: auto;
+        }
     </style>
 </head>
 <body ng-app="validationApp">
 
 <div class="container" ng-controller="mainController">
 <div id="page-wrap" style="display: none;">
+    <img id="impala" src="./Assets/Images/impala.gif">
     <h1 id="title"><b>LOG IN TO START RIDING...</b></h1>
     <form id="mainform" name="userForm" action="formlogin.php"  class="form-horizontal" method="POST"  novalidate>
         <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">

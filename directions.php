@@ -7,7 +7,8 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] == false) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GoPool</title>
+    <title>Impala</title>
+    <link rel="shortcut icon" href="./Assets/Images/impala.gif"> 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>

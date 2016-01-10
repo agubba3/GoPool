@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <title>GoPool</title>
-	<link rel="shortcut icon" href="./Assets/Images/logoalt.png"> 
+    <title>Impala</title>
+	<link rel="shortcut icon" href="./Assets/Images/impala.gif"> 
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -151,7 +151,7 @@
         #impala {
             float: right;
             position: relative;
-            margin-top: -53px;
+            margin-top: -52px;
                 width: 7%;
     height: auto;
         }
@@ -161,7 +161,7 @@
 
 <div class="container" ng-controller="mainController">
 <div id="page-wrap" style="display: none;">
-    <img id="impala" src="./Assets/Images/impala.gif">
+    <img id="impala" src="./Assets/Images/impalaorig.gif">
     <h1 id="title"><b>LOG IN TO START RIDING...</b></h1>
     <form id="mainform" name="userForm" action="formlogin.php"  class="form-horizontal" method="POST"  novalidate>
         <div class="inner-addon left-addon" id="user" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
@@ -203,7 +203,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title nobord">GET STARTED WITH <span class="bold">GOPOOL</span>!</h4>
+                <h4 class="modal-title nobord">GET STARTED WITH <span class="bold">IMPALA</span>!</h4>
             </div>
             <div class="modal-body">
                 <p class="nobord">Enter your basic information and start riding.</p>

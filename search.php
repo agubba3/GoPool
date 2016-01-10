@@ -8,8 +8,8 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] == false) {
 <html ng-app="plunker">   
     <head>
         <meta charset="utf-8" />
-        <title>GoPool</title>
-		<link rel="shortcut icon" href="./Assets/Images/logoalt.png"> 
+        <title>Impala</title>
+		<link rel="shortcut icon" href="./Assets/Images/impala.gif"> 
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

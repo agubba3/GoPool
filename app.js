@@ -151,22 +151,24 @@ app.controller('BoxController', ['$scope', '$timeout', function ($scope, $timeou
 
 		var t = window.setInterval(function(){
 			check();
-		}, 100);
+		}, 50);
 		
 			
 		function check() {
+			console.log("LOAD: " + $scope.stillloading);
 			$timeout(function() {
 				var oldi = i;
 				$timeout(function() {
 					var currenti = i;
 					console.log("Old i: " + oldi);
 					console.log("New i: " + currenti);
-					if(oldi + 5 < currenti || oldi - 5 > currenti) {
+					if(Math.abs(oldi - currenti) < 100 && oldi != 0 && currenti != 0) {
 						$scope.stillloading = false;
+						console.log("LOAD SHOULD BE FALSE: " + $scope.stillloading);
 						clearInterval(t);
 					}
-				}, 50);
-			}, 50);	
+				}, 25);
+			}, 25);	
 		};
 		
         $(document).ready(function(){
